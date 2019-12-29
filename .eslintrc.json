@@ -4,10 +4,6 @@
         "commonjs": true,
         "node": true
     },
-    "extends": "prettier",
-    "plugins": [
-        "prettier"
-      ],
     "rules": {
         "no-duplicate-case":"error",
         "no-empty":"error",
@@ -20,8 +16,16 @@
         "eqeqeq": "error",
         "no-empty-function": "error",
         "no-multi-spaces": "error",
+        "no-mixed-spaces-and-tabs": "error",
+        "no-trailing-spaces": "error",
+        "default-case": "error",
+        "no-fallthrough": "error",
         "no-unused-vars": "error",
+        "no-use-before-define": "error",
+        "no-redeclare": "error",
         "camelcase": "error",
+        "brace-style": "error",
+        "no-var": "error",
         "indent": [
             "error",
             2
@@ -37,7 +41,7 @@
         "semi": [
             "error",
             "always"
-        ],
-        "prettier/prettier": "error"
+        ]
     }
-}
+  }
+  
