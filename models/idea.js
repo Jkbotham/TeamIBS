@@ -3,11 +3,11 @@ module.exports = function (sequelize, DataTypes) {
     const Idea = sequelize.define("Idea", {
         title: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull:false
         },
         body: {
-            type: DataTypes.STRING,
-            allowNull: false
+            allowNull:false,
+            type: DataTypes.STRING
         },
         points: {
             type: DataTypes.INTEGER
@@ -15,9 +15,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Idea.associate = function (models) {
-        Idea.hasMany(models.Comment, {
-            onDelete: "cascade"
-        });
+        Idea.hasMany(models.Comment, {});
     };
     return Idea
 };

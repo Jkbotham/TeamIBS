@@ -8,6 +8,7 @@ module.exports = function (app) {
 
 	// Creates new Idea
 	app.post("/api/newIdea", function (req, res) {
+		console.log(req.body)
 		db.Idea.create({
 			title: req.body.title,
 			body: req.body.body,
@@ -37,5 +38,15 @@ module.exports = function (app) {
 		}).then(function () {
 			res.end();
 		});
+	});
+
+	app.post("/api/delete", function(req,res){
+		db.Idea.destroy({
+			where:{
+				id: req.body.id
+			}
+		}).then(function(){
+			res.end();
+		})
 	});
 }

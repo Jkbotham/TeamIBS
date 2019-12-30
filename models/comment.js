@@ -11,7 +11,8 @@ module.exports = function(sequelize, DataTypes){
         Comment.belongsTo(models.Idea,{
             foreignKey: {
                 allowNull: false
-            }
+            },
+            onDelete: "cascade"
         });
     };
     return Comment

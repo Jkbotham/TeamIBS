@@ -2,8 +2,11 @@
 module.exports = function (Sequelize, DataTypes) {
         const SubComment = Sequelize.define("SubComment", {
         body: {
-            allowNull: false,
-            type: DataTypes.STRING
+            validate: {
+                notNull: true
+            },
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
 

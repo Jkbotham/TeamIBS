@@ -6,36 +6,46 @@
     <h4>Idea: {{this.body}}</h4>
     <h5>Points: {{this.points}}</h5>
     <p>{{this.createdAt}}</p>
-
-    <form>
-      <input type="text" class="commentText" name="text" placeholder="Enter Comment Here">
-      <br>
-      <div class="row">
-        <div class="col-md-6">
-          <button type="submit" class="button subButton comment" style="margin:0px auto; display:block"
-            data-id="{{this.id}}" data-upOrDown=true data-points="{{this.points}}">Submit Up Vote</button>
-        </div>
-        <div class="col-md-6">
-          <button type="submit" class="button subButton comment" style="margin:0px auto; display:block"
-            data-id="{{this.id}}" data-points="{{this.points}}">Submit Down Vote</button>
-        </div>
-      </div>
-
-    </form>
-
-
-    {{#if this.Comments}}
-    {{#each this.Comments}}
-
-    <p>{{this.body}}</p>
-    <p>{{this.createdAt}}</p>
-
-    {{/each}}
-    {{/if}}
-
-    <hr>
-
-    {{/each}}
-
   </div>
+</div>
+
+<form class="form">
+  <div class="row">
+    <div class="col-md-12">
+      <input type="text" class="commentText" name="text" placeholder="Enter Comment Here" required \>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <button type="submit" class="button subButton comment" style="margin:0px auto; display:block"
+        data-id="{{this.id}}" data-upOrDown=true data-points="{{this.points}}">Submit Up Vote</button>
+    </div>
+    <div class="col-md-4">
+      <button type="submit" class="button subButton remove" style="margin:0px auto; display:block"
+        data-id="{{this.id}}">Delete this Idea</button>
+    </div>
+    <div class="col-md-4">
+      <button type="submit" class="button subButton comment" style="margin:0px auto; display:block"
+        data-id="{{this.id}}" data-points="{{this.points}}">Submit Down Vote</button>
+    </div>
+  </div>
+
+</form>
+
+
+{{#if this.Comments}}
+{{#each this.Comments}}
+
+<p>{{this.body}}</p>
+<p>{{this.createdAt}}</p>
+
+{{/each}}
+{{/if}}
+
+<hr>
+
+{{/each}}
+
+</div>
 </div>
