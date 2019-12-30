@@ -1,9 +1,7 @@
 $(document).ready(function(){
 
-
 $(".newIdea").on("click", function(event){
 	event.preventDefault();
-	console.log($("#title").val(),$("#body").val());
 
 	let newIdea = {
 		title: $("#title").val().trim(),
@@ -12,10 +10,8 @@ $(".newIdea").on("click", function(event){
 
 	$.post("/api/newIdea", newIdea).then(function(){
 		window.location.reload();
-	})
-})
-
-
+	});
+});
 
 $(".comment").on("click", function(event){
 	event.preventDefault();
@@ -34,13 +30,7 @@ $(".comment").on("click", function(event){
 
 	$.post("/api/newComment", comment).then(function(){
 		location.reload();
-	})
-	console.log(comment);
+	});
+});
 
-
-})
-
-
-
-
-})
+});

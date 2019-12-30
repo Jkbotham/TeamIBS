@@ -1,5 +1,4 @@
 
-
 body {
     background-color: 	lightgray;
     margin: auto;
@@ -22,11 +21,11 @@ body {
     border-radius: 12px;
   }
   
-
   .button:hover {
     background-color: gray; 
     color: black;
   }
+
 hr{
     border: 2px solid;
 }
@@ -52,7 +51,6 @@ hr{
     text-align: center;
     font-weight: bold;
     font-size: 18px;
-
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -62,12 +60,13 @@ hr{
 	box-shadow: inset 1px 1px 4px ;
 	-moz-box-shadow: inset 1px 1px 4px ;
 	-webkit-box-shadow: inset 1px 1px 4px ;
-	/* width:50%; */
 }
+
 #body{
   width:400px;
   height:100px;
 }
+
 #title{
   width:250px;
   height:40px;
@@ -77,11 +76,11 @@ hr{
   width:175px;
   height:100px;
 }
+
 .subButton:hover{
     background-color: gray; 
     color: black;
 }
-
 
 .center{
     text-align: center;

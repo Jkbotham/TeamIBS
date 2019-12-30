@@ -1,3 +1,4 @@
+
 module.exports = function (sequelize, DataTypes) {
     const Idea = sequelize.define("Idea", {
         title: {

@@ -3,13 +3,10 @@ var db = require("../models");
 module.exports = function (app) {
 	// Get all examples
 	app.get("/api/ideas", function (req, res) {
-		db.Idea.findAll({}).then(function (result) {
-			// res.json(result);
-			console.log(JSON.stringify(results))
-		});
+		db.Idea.findAll({}).then(function () {});
 	});
 
-
+	// Creates new Idea
 	app.post("/api/newIdea", function (req, res) {
 		db.Idea.create({
 			title: req.body.title,
@@ -17,11 +14,11 @@ module.exports = function (app) {
 			points: 0
 		}).then(function (results) {
 			res.end();
-		})
+		});
 	});
 
+	// Creates new comment on an idea and updates Vote Points of the Idea
 	app.post("/api/newComment", function (req, res) {
-		console.log(req.body.points)
 		db.Comment.create({
 			body: req.body.body,
 			IdeaId: req.body.ideaID
@@ -39,8 +36,6 @@ module.exports = function (app) {
 			}
 		}).then(function () {
 			res.end();
-		})
-
-		console.log(req.body.points)
-	})
+		});
+	});
 }
