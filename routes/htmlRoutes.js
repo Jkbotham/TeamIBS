@@ -1,14 +1,13 @@
-var db = require("../models");
+const db = require("../models");
 
-module.exports = function (app) {
+module.exports = (app) => {
 
 	// Load index page
 	app.get("/", (req, res) => {
 		db.Idea.findAll({
 			include: [db.Comment]
 		})
-
-			.then(function (results) {
+			.then(results => {
 				console.log(JSON.stringify(results))
 				res.render("index", { idea: results })
 			})
@@ -34,7 +33,12 @@ module.exports = function (app) {
 		})
 			.then(results => {
 				console.log(JSON.stringify(results));
+
+				//This needs to change once handlebars page is complete
+				//-----------------------------------
 				res.render("index", { idea: results });
+				//-----------------------------------
+
 			})
 			.catch(err => {
 				console.log(err)
