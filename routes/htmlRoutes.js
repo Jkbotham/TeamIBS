@@ -8,20 +8,20 @@ module.exports = function (app) {
 			include: [db.Comment]
 		})
 
-		.then(function (results) {
-			console.log(JSON.stringify(results))
-			res.render("index", { idea: results })
-		})
-		.catch(err => {
-			console.log(err)
-		})
+			.then(function (results) {
+				console.log(JSON.stringify(results))
+				res.render("index", { idea: results })
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	});
 
 	// load idea page
 	app.get("/idea/:id", (req, res) => {
 		const reqId = req.params.id
 
-		const ideaCall = db.Idea.findAll({
+		db.Idea.findAll({
 			where: {
 				id: reqId
 			},
@@ -32,17 +32,14 @@ module.exports = function (app) {
 				}
 			}]
 		})
-		
-
-		.then(results => {
-			console.log(JSON.stringify(results));
-			res.render("index", {idea: results});
-		})
-		.catch(err => {
-			console.log(err)
-		})
+			.then(results => {
+				console.log(JSON.stringify(results));
+				res.render("index", { idea: results });
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	});
-
 
 	// Render 404 page for any unmatched routes
 	app.get("*", (req, res) => {
