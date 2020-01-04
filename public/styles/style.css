@@ -1,0 +1,91 @@
+
+body {
+    background-color: 	lightgray;
+    margin: auto;
+    text-align: center;
+}
+
+.button {
+    background-color: #b5651d; 
+    border: 2px solid #b5651d;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+  
+  .button:hover {
+    background-color: gray; 
+    color: black;
+  }
+
+hr{
+    border: 2px solid;
+}
+  .subButton{
+    position: relative;
+	display: block;
+	padding: 19px 39px 18px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	font-size: 18px;
+	text-align: center;
+	font-style: normal;
+	width:50%;
+	border: 1px solid black;
+	border-width: 1px 1px 3px;
+	margin-bottom: 10px;
+      background-color: #b5651d;
+      color:white;
+      margin:auto;
+  }
+
+#body,#title,.commentText {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 1px solid ;
+	outline: none;
+	padding: 5px 8px 5px 8px;
+	box-shadow: inset 1px 1px 4px ;
+	-moz-box-shadow: inset 1px 1px 4px ;
+	-webkit-box-shadow: inset 1px 1px 4px ;
+}
+
+#body{
+  width:400px;
+  height:100px;
+}
+
+#title{
+  width:250px;
+  height:40px;
+}
+
+.comment, .remove {
+  width:175px;
+  height:100px;
+}
+
+.subButton:hover{
+    background-color: gray; 
+    color: black;
+}
+
+.center{
+    text-align: center;
+}
+
+.brd {
+    border: .1px solid ;
+}
