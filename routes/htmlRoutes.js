@@ -1,43 +1,51 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
 
 	// Load index page
-	app.get("/", function (req, res) {
+	app.get("/", (req, res) => {
 		db.Idea.findAll({
 			include: [db.Comment]
-		}).then(function(results){
-			res.render("index",{idea: results})
 		})
-	  });
 
-	  app.get("/idea/:id", function(req, res){
-		db.Idea.findAll({
-			where: {id: req.params.id}
-			// ,
-			// include: [{
-			// 	model: db.Comment
-			// 	, 
-			// 	where: {IdeaId: req.params.id}
-			// }]
+		.then(function (results) {
+			console.log(JSON.stringify(results))
+			res.render("index", { idea: results })
 		})
-		.then(function(results){
-			db.Comment.findAll({
-				where: {IdeaId: req.params.id}
-			}).then(function(aResults){
-		;
-				results.comments = aResults
-				console.log(results, "11111111111111111111111111111111111111")
+		.catch(err => {
+			console.log(err)
+		})
+	});
 
-				console.log(aResults, "2222222222222222222222222222222222222")
-			})
-			// res.render("idea",{idea: results})
-			// console.log(JSON.stringify(results.Comments))
+	// load idea page
+	app.get("/idea/:id", (req, res) => {
+		const reqId = req.params.id
+
+		const ideaCall = db.Idea.findAll({
+			where: {
+				id: reqId
+			},
+			include: [{
+				model: db.Comment,
+				where: {
+					IdeaId: reqId
+				}
+			}]
 		})
-	})
+		
+
+		.then(results => {
+			console.log(JSON.stringify(results));
+			res.render("index", {idea: results});
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	});
+
 
 	// Render 404 page for any unmatched routes
-	app.get("*", function(req, res) {
+	app.get("*", (req, res) => {
 		res.render("404");
 	});
 
