@@ -1,24 +1,52 @@
 var db = require("../models");
 
-module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
+module.exports = function (app) {
+	// Get all examples
+	app.get("/api/ideas", function (req, res) {
+		db.Idea.findAll({}).then(function () {});
+	});
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
+	// Creates new Idea
+	app.post("/api/newIdea", function (req, res) {
+		console.log(req.body)
+		db.Idea.create({
+			title: req.body.title,
+			body: req.body.body,
+			points: 0
+		}).then(function (results) {
+			res.end();
+		});
+	});
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-};
+	// Creates new comment on an idea and updates Vote Points of the Idea
+	app.post("/api/newComment", function (req, res) {
+		db.Comment.create({
+			body: req.body.body,
+			IdeaId: req.body.ideaID
+		})
+
+		if (req.body.vote) {
+			req.body.points++
+		} else {
+			req.body.points--
+		}
+
+		db.Idea.update({ points: req.body.points }, {
+			where: {
+				id: req.body.ideaID
+			}
+		}).then(function () {
+			res.end();
+		});
+	});
+
+	app.post("/api/delete", function(req,res){
+		db.Idea.destroy({
+			where:{
+				id: req.body.id
+			}
+		}).then(function(){
+			res.end();
+		})
+	});
+}

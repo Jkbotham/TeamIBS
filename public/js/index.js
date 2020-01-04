@@ -1,99 +1,46 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+$(document).ready(function(){
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
+$(".newIdea").on("click", function(event){
+	event.preventDefault();
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+	let newIdea = {
+		title: $("#title").val().trim(),
+		body: $("#body").val().trim()
+	}
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
+	$.post("/api/newIdea", newIdea).then(function(){
+		window.location.reload();
+	});
+});
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+$(".comment").on("click", function(event){
+	event.preventDefault();
 
-      $li.append($button);
+	const id = $(this).data().id
+	const point = $(this).data().points
+	const upOrDown = $(this).data().upordown
+	const bodyText = $(this).parent().parent().parent().contents()[1].children[0].childNodes[1].value
 
-      return $li;
-    });
+	console.log(bodyText)
+	let comment = {
+		ideaID: id,
+		body: bodyText,
+		points: point,
+		vote: upOrDown
+	}
 
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
+	$.post("/api/newComment", comment).then(function(){
+		location.reload();
+	});
+});
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
+$(".remove").on("click", function(event){
+	event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+	const remove = {id: $(this).data().id}
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
-
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+	$.post("/api/delete", remove).then(function(){
+		window.location.reload();
+	});
+})
+});
