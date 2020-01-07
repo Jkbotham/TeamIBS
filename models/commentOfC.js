@@ -5,7 +5,7 @@ module.exports = function (Sequelize, DataTypes) {
             validate: {
                 notNull: true
             },
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false
         }
     });

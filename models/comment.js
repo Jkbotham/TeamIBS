@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes){
     const Comment = sequelize.define("Comment", {
         body: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false
         }
     });
