@@ -1,12 +1,12 @@
 <div class="card">
-<h5 class="card-header card-title">{{idea.idea.title}}</h5>
+<h5 class="card-header card-title">{{idea.idea.title}}<div class="float-right">{{idea.idea.points}}</div></h5>
     <div class="card-body">
         <p class="card-text">{{idea.idea.body}}</p>
         <p class="card-text card-subtitle">{{idea.idea.createdAt}}</p>
-        <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-up fa-2x"></i></a>
-        <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-down fa-2x"></i></a>
     </div>
 </div>
+
+<hr>
 
 {{#if this.idea.comments}}
 {{#each this.idea.comments}}
@@ -22,3 +22,40 @@
 
 {{/each}}
 {{/if}}
+
+<hr>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="body">Comment</label>
+            <div class="row">
+                <div class="col-md-10">
+                    <textarea class="form-control" rows="9" id="comment-body" placeholder="Enter comment"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-md-12">
+                        <a href="#" class="card-link" alt="submit comment with +1"><i style="text-align: center;" class="far fa-arrow-alt-circle-up fa-4x"></i></a>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p style="text-align: left;" class="card-subtitle">Click one to submit comment</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                        <a href="#" class="card-link" alt="submit comment with -1"><i style="text-align: center;" class="far fa-arrow-alt-circle-down fa-4x"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
+  <br><br><br>
