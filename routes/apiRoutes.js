@@ -1,25 +1,28 @@
-var db = require("../models");
+const db = require("../models");
 
-module.exports = function (app) {
+module.exports = (app) => {
 	// Get all examples
-	app.get("/api/ideas", function (req, res) {
-		db.Idea.findAll({}).then(function () {});
-	});
+	app.get("/api/ideas", (req, res) => {
+		db.Idea.findAll({})
+	})
 
 	// Creates new Idea
-	app.post("/api/newIdea", function (req, res) {
+	app.post("/api/newIdea", (req, res) => {
 		console.log(req.body)
 		db.Idea.create({
 			title: req.body.title,
 			body: req.body.body,
 			points: 0
-		}).then(function (results) {
+		}).then(results => {
 			res.end();
-		});
+		})
+			.catch(err => {
+				console.log(err)
+			})
 	});
 
 	// Creates new comment on an idea and updates Vote Points of the Idea
-	app.post("/api/newComment", function (req, res) {
+	app.post("/api/newComment", (req, res) => {
 		db.Comment.create({
 			body: req.body.body,
 			IdeaId: req.body.ideaID
@@ -35,17 +38,21 @@ module.exports = function (app) {
 			where: {
 				id: req.body.ideaID
 			}
-		}).then(function () {
-			res.end();
-		});
+		})
+			.then(() => {
+				res.end();
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	});
 
-	app.post("/api/delete", function(req,res){
+	app.post("/api/delete", (req, res) => {
 		db.Idea.destroy({
-			where:{
+			where: {
 				id: req.body.id
 			}
-		}).then(function(){
+		}).then(() => {
 			res.end();
 		})
 	});
