@@ -45,6 +45,12 @@ module.exports = (app) => {
 			})
 	});
 
+	app.get("/submit", (req, res) => {
+		res.render("submit")
+	})
+
+	app.get("/html")
+
 	// Render 404 page for any unmatched routes
 	app.get("*", (req, res) => {
 		res.render("404");

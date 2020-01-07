@@ -9,7 +9,7 @@ $(".newIdea").on("click", function(event){
 	}
 
 	$.post("/api/newIdea", newIdea).then(function(){
-		window.location.reload();
+		window.location.pathname("/");
 	});
 });
 
