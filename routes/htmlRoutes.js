@@ -20,21 +20,24 @@ module.exports = (app) => {
 	app.get("/idea/:id", (req, res) => {
 		const reqId = req.params.id
 
-		db.Idea.findAll({
+		const idea = db.Idea.findOne({
 			where: {
 				id: reqId
-			},
-			include: [{
-				model: db.Comment,
-				where: {
-					IdeaId: reqId
-				}
-			}]
+			}})
+		const comments = db.Comment.findAll({
+			where: {
+				ideaId: reqId
+			}
 		})
+		Promise.all([idea,comments])
 			.then(results => {
-				console.log(JSON.stringify(results));
-
-				res.render("idea", { idea: results });
+				// console.log(JSON.stringify(results));
+				const obj = {
+					idea: results[0],
+					comments: results[1]
+				}
+				console.log(JSON.stringify(results[1]));
+				res.render("idea", { idea: obj });
 				
 
 			})
