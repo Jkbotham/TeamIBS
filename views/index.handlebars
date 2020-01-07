@@ -1,15 +1,19 @@
-<div class="row">
-  <div class="col-md-12">
-
     {{#each idea}}
-    <h2>Title: {{this.title}}</h2>
-    <h4>Idea: {{this.body}}</h4>
-    <h5>Points: {{this.points}}</h5>
-    <p>{{this.createdAt}}</p>
-  </div>
-</div>
+    <div class="card float-left idea-card" style="width: 16rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.body}}</p>
+        <hr class="hr-strong">
+        <h6 class="card-subtitle mb-2 text-muted">{{this.createdAt}}</h6>
+        <a href="/idea/{{this.id}}" class="card-link"><i class="far fa-comment-dots fa-2x"></i></a>
+        <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-up fa-2x"></i></a>
+        <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-down fa-2x"></i></a>
+        <h6 class="card-score float-right" style="color: green">+{{this.points}}</h6>
 
-<form class="form">
+      </div>
+    </div>
+
+{{!-- <form class="form">
   <div class="row">
     <div class="col-md-12">
       <input type="text" class="commentText" name="text" placeholder="Enter Comment Here" required \>
@@ -31,21 +35,6 @@
     </div>
   </div>
 
-</form>
-
-
-{{#if this.Comments}}
-{{#each this.Comments}}
-
-<p>{{this.body}}</p>
-<p>{{this.createdAt}}</p>
+</form> --}}
 
 {{/each}}
-{{/if}}
-
-<hr>
-
-{{/each}}
-
-</div>
-</div>
