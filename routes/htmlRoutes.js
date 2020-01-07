@@ -34,10 +34,8 @@ module.exports = (app) => {
 			.then(results => {
 				console.log(JSON.stringify(results));
 
-				//This needs to change once handlebars page is complete
-				//-----------------------------------
-				res.render("index", { idea: results });
-				//-----------------------------------
+				res.render("idea", { idea: results });
+				
 
 			})
 			.catch(err => {

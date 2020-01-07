@@ -95,10 +95,12 @@ text-align: left;
 font-size: .5em;
 }
 
-.card {
+.idea-card {
   height: 16rem;
   width: 16rem;
-  white-space: pre-line;
-  overflow: hidden;
-  text-overflow: ellipsis !important;
+}
+
+.card-bottom {
+  position: relative;
+  margin-bottom: 10px !important;
 }
