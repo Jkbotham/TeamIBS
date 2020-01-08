@@ -1,0 +1,24 @@
+<div class="card">
+<h5 class="card-header card-title">{{idea.idea.title}}</h5>
+    <div class="card-body">
+        <p class="card-text">{{idea.idea.body}}</p>
+        <p class="card-text card-subtitle">{{idea.idea.createdAt}}</p>
+        <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-up fa-2x"></i></a>
+        <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-down fa-2x"></i></a>
+    </div>
+</div>
+
+{{#if this.idea.comments}}
+{{#each this.idea.comments}}
+
+<div class="card">
+    <div class="card-body">
+        <p class="card-text">{{this.body}}</p>
+        <p class="card-text card-subtitle">{{this.createdAt}}</p>
+        <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-up"></i></a>
+        <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-down"></i></a>
+    </div>
+</div>
+
+{{/each}}
+{{/if}}

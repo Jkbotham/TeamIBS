@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,52 +10,51 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/308ac35dbf.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/styles/style.css">
   <title>Idea Board</title>
 </head>
 
+<nav class="navbar navbar-dark bg-dark" style="justify-content: normal; margin-bottom: 20px">
+  <a class="navbar-brand" href="/"><img src="/img/slice3.png" class="d-inline-block align-top" width="100" style="margin-left:20px; margin-right:10px"></a>
+  <a class="nav-item nav-link left" style="color: #ccc" href="#">Profile</a>
+  <a class="nav-item nav-link left" style="color: #ccc" href="/submit">Submit</a>
+</nav>
+
 <body>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>For Test Purposes</h1>
+          {{{ body }}}
+
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Ideas BB</h2>
-        <br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <form>
-          <input type="text" id="title" name="title" placeholder="Enter Title Here"><br>
-        </form>
-        <br>
-        <form>
-          <input type="text" id="body" name="body" placeholder="Enter of Idea Here"><br>
-          <br>
-          <button type="submit" class="button subButton newIdea" style="margin:0px auto; display:block;">Submit</button>
-        </form>
-        <hr>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
+{{!-- 
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{your-app-id}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
 
-        {{{ body }}}
-
-      </div>
-    </div>
-
-  </div>
-  </div>
-
-
-  <script src="./js/index.js"></script>
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script> --}}
+  <script src="/js/index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
     crossorigin="anonymous"></script>
