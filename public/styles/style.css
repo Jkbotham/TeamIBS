@@ -109,3 +109,14 @@ font-size: .5em;
   max-height: 25%;
   
 }
+
+.comment-button {
+  color: white;
+  width: 100%;
+}
+
+.comment-form {
+  width: 49%;
+  max-width: 100% !important;
+  resize: both;
+}
