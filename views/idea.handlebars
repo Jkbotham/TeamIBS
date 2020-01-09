@@ -1,5 +1,5 @@
-<div class="card">
-<h5 class="card-header card-title">{{idea.idea.title}}<div class="float-right">{{idea.idea.points}}</div></h5>
+<div class="card single-idea-card">
+<h5 class="card-header card-title">{{idea.idea.title}}<div class="float-right idea-score">{{idea.idea.points}}</div></h5>
     <div class="card-body">
         <p class="card-text">{{idea.idea.body}}</p>
         <p class="card-text card-subtitle">{{idea.idea.createdAt}}</p>
@@ -11,12 +11,10 @@
 {{#if this.idea.comments}}
 {{#each this.idea.comments}}
 
-<div class="card">
+<div class="card" style="background-color: #eee; margin-bottom: 5px;">
     <div class="card-body">
         <p class="card-text">{{this.body}}</p>
         <p class="card-text card-subtitle">{{this.createdAt}}</p>
-        <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-up"></i></a>
-        <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-down"></i></a>
     </div>
 </div>
 
@@ -36,49 +34,22 @@
 </div>
 <div class="row">
     <div class="col-md-3 text-center">
-        <button type="button" class="btn btn-danger comment-button" data-id={{idea.idea.id}} data-points=0 data-upordown=true>
+        <button type="button" class="btn btn-danger comment-button" data-id={{idea.idea.id}} data-points={{idea.idea.points}}>
             <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-down fa-2x comment-button"></i></a>
         </button>
     </div>
     <div class="col-md-3 text-center">
-        <button type="button" class="btn btn-success comment-button" data-id={{idea.idea.id}} data-points=0 data-upordown=false>
+        <button type="button" class="btn btn-success comment-button" data-id={{idea.idea.id}} data-points={{idea.idea.points}} data-upordown=true>
             <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-up fa-2x comment-button"></i></a>
         </button>
     </div>
     <div class="col-md-6 col-sm-hidden"></div> <!--Fills out col-md-6 above, disappears on mobile-->
 </div>
 
-{{!-- <div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label for="body">Comment</label>
-            <div class="row">
-                <div class="col-md-10">
-                    <textarea class="form-control" rows="9" id="comment-body" placeholder="Enter comment"></textarea>
-                </div>
-                <div class="col-md-2">
-                    <div class="row">
-                        <div class="col-md-12">
-                        <a href="#" class="card-link" alt="submit comment with +1"><i style="text-align: center;" class="far fa-arrow-alt-circle-up fa-4x"></i></a>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p style="text-align: left;" class="card-subtitle">Click one to submit comment</p>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                        <a href="#" class="card-link" alt="submit comment with -1"><i style="text-align: center;" class="far fa-arrow-alt-circle-down fa-4x"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
+{{!-- These are the up and down arrows
+<a href="#"><i class="far fa-arrow-alt-circle-up fa-4x"></i></a>
+<a href="#"><i class="far fa-arrow-alt-circle-down fa-4x"></i></a>
+     --}}
   
   
   <br><br><br>
