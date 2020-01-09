@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+	console.log("\n Test: \n" + parseInt($(".idea-score").html()))
+
 	$(".newIdea").on("click", function (event) {
 		event.preventDefault();
 
@@ -43,4 +45,17 @@ $(document).ready(function () {
 			window.location.reload();
 		});
 	})
+
+	const ideaScore = parseInt($(".idea-score").html());
+
+	if (ideaScore > 0) {
+		$(".idea-score").html("+" + ideaScore)
+		$(".idea-score").css("color", "green");
+	}
+	else if (parseInt($(".idea-score").html()) < 0) {
+		$(".idea-score").css("color", "#dc3545");
+	}
+	else {
+		$(".idea-score").css("color", "black");
+	}
 });
