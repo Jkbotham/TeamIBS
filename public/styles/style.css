@@ -1,16 +1,8 @@
-
-body {
-    background-color: 	lightgray;
-    margin: auto;
-    text-align: center;
-}
-
 .button {
     background-color: #b5651d; 
     border: 2px solid #b5651d;
     color: white;
     padding: 16px 32px;
-    text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 26px;
@@ -26,7 +18,7 @@ body {
     color: black;
   }
 
-hr{
+.strong {
     border: 2px solid;
 }
   .subButton{
@@ -36,7 +28,6 @@ hr{
 	color: #FFF;
 	margin: 0 auto;
 	font-size: 18px;
-	text-align: center;
 	font-style: normal;
 	width:50%;
 	border: 1px solid black;
@@ -47,8 +38,8 @@ hr{
       margin:auto;
   }
 
-#body,#title,.commentText {
-    text-align: center;
+/* #body,#title,.commentText {
+    text-align: left;
     font-weight: bold;
     font-size: 18px;
 	border-radius: 3px;
@@ -60,17 +51,17 @@ hr{
 	box-shadow: inset 1px 1px 4px ;
 	-moz-box-shadow: inset 1px 1px 4px ;
 	-webkit-box-shadow: inset 1px 1px 4px ;
-}
-
+} */
+/* 
 #body{
   width:400px;
   height:100px;
-}
+} */
 
-#title{
+/* #title{
   width:250px;
   height:40px;
-}
+} */
 
 .comment, .remove {
   width:175px;
@@ -82,10 +73,57 @@ hr{
     color: black;
 }
 
-.center{
-    text-align: center;
-}
-
 .brd {
     border: .1px solid ;
+}
+
+body {
+  background-color: 	lightgray;
+  margin: auto;
+}
+
+.card-title {
+font-size: 1.5em;
+}
+
+.idea-card {
+margin: 10px;
+text-align: left;
+}
+
+.card-subtitle {
+font-size: .5em;
+}
+
+.idea-card {
+  height: 16rem;
+  width: 16rem;
+}
+
+.card-top {
+  height: 65%;
+  overflow: scroll;
+}
+
+.card-bottom {
+  max-height: 25%;
+  
+}
+
+.comment-button {
+  color: white;
+  width: 100%;
+}
+
+.comment-form {
+  width: 49%;
+  max-width: 100% !important;
+  resize: both;
+}
+.positice {
+  color: green
+}
+
+negative {
+  coor
 }

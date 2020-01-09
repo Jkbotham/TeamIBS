@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         body: {
             allowNull:false,
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         points: {
             type: DataTypes.INTEGER
