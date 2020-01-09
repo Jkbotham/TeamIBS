@@ -5,7 +5,8 @@ module.exports = (app) => {
 	// Load index page
 	app.get("/", (req, res) => {
 		db.Idea.findAll({
-			include: [db.Comment]
+			include: [db.Comment],
+			order: [['id', 'DESC']]
 		})
 			.then(results => {
 				console.log(JSON.stringify(results))
