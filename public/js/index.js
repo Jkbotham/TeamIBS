@@ -30,10 +30,12 @@ $(document).ready(function () {
 			points: point,
 			vote: upOrDown
 		}
-
-		$.post("/api/newComment", comment).then(function () {
-			location.reload();
-		});
+		if (bodyText) {
+			$.post("/api/newComment", comment).then(function () {
+				location.reload();
+			});
+		}
+		else ($(".warning-div").html("<br>You must enter a comment to vote."));
 	});
 
 	$(".remove").on("click", function (event) {
