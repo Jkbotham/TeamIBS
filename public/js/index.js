@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+	console.log("\n Test: \n" + parseInt($(".idea-score").html()))
+
 	$(".newIdea").on("click", function (event) {
 		event.preventDefault();
 
@@ -13,13 +15,13 @@ $(document).ready(function () {
 		});
 	});
 
-	$(".comment").on("click", function (event) {
+	$(".comment-button").on("click", function (event) {
 		event.preventDefault();
 
 		const id = $(this).data().id
 		const point = $(this).data().points
 		const upOrDown = $(this).data().upordown
-		const bodyText = $(this).parent().parent().parent().contents()[1].children[0].childNodes[1].value
+		const bodyText = $(".comment-form").val();
 		
 		console.log(bodyText)
 		let comment = {
@@ -43,4 +45,17 @@ $(document).ready(function () {
 			window.location.reload();
 		});
 	})
+
+	const ideaScore = parseInt($(".idea-score").html());
+
+	if (ideaScore > 0) {
+		$(".idea-score").html("+" + ideaScore)
+		$(".idea-score").css("color", "green");
+	}
+	else if (parseInt($(".idea-score").html()) < 0) {
+		$(".idea-score").css("color", "#dc3545");
+	}
+	else {
+		$(".idea-score").css("color", "black");
+	}
 });
