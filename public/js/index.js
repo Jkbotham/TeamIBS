@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	console.log("\n Test: \n" + parseInt($(".idea-score").html()))
+	// console.log("\n Test: \n" + parseInt($(".idea-score").html()))
 
 	$(".newIdea").on("click", function (event) {
 		event.preventDefault();
@@ -49,15 +49,23 @@ $(document).ready(function () {
 	})
 
 	const ideaScore = parseInt($(".idea-score").html());
-
 	if (ideaScore > 0) {
 		$(".idea-score").html("+" + ideaScore)
 		$(".idea-score").css("color", "green");
 	}
-	else if (parseInt($(".idea-score").html()) < 0) {
+	else if (ideaScore < 0) {
 		$(".idea-score").css("color", "#dc3545");
 	}
 	else {
 		$(".idea-score").css("color", "black");
 	}
+
+	$('h6[class="card-score"]').each(function(index){
+		console.log(index);
+		if (parseInt($(this).data('index'))>0){
+			$(this).css("color", "green");
+		}
+	});
+	console.log("test2");
+
 });
