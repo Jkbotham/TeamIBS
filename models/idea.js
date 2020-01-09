@@ -1,4 +1,6 @@
 
+const moment = require("moment");
+
 module.exports = function (sequelize, DataTypes) {
     const Idea = sequelize.define("Idea", {
         title: {
@@ -11,7 +13,19 @@ module.exports = function (sequelize, DataTypes) {
         },
         points: {
             type: DataTypes.INTEGER
-        }
+        },
+        createdAt: {
+            type: DataTypes.DATE,                  
+          get() {
+                return moment(this.getDataValue('createdAt')).format('MM/DD/YYYY h:mm:ss');
+            }
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            get() {
+                return moment(this.getDataValue('updatedAt')).format('MM/DD/YYYY h:mm:ss');
+            }
+        }        
     });
 
     Idea.associate = function (models) {
