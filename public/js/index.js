@@ -13,13 +13,13 @@ $(document).ready(function () {
 		});
 	});
 
-	$(".comment").on("click", function (event) {
+	$(".comment-button").on("click", function (event) {
 		event.preventDefault();
 
 		const id = $(this).data().id
 		const point = $(this).data().points
 		const upOrDown = $(this).data().upordown
-		const bodyText = $(this).parent().parent().parent().contents()[1].children[0].childNodes[1].value
+		const bodyText = $(".comment-form").val();
 		
 		console.log(bodyText)
 		let comment = {
