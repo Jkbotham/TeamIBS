@@ -60,7 +60,10 @@ $(document).ready(function () {
 		$(".idea-score").css("color", "black");
 	}
 
-	for (var i = 1; i <= $(".card-score").length; i++){
+	const maxCardId = parseInt($(".card-score").first().data("thisid"));
+	console.log(maxCardId);
+
+	for (var i = 1; i <= maxCardId; i++){
 		const thisScore = parseInt($("#idea-card-"+i).data("index"));
 		if (thisScore>0){
 			$("#idea-card-"+i).html("+"+thisScore)
@@ -72,8 +75,8 @@ $(document).ready(function () {
 		else {
 			$("#idea-card-"+i).css("color","black")
 		}
-		console.log(parseInt($("#idea-card-"+i).data("index")));
-		console.log("Number of Cards: " + $(".card-score").length);
+		// console.log(parseInt($("#idea-card-"+i).data("index")));
+		// console.log("Number of Cards: " + $(".card-score").length);
 	}
 
 });
