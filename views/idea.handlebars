@@ -1,15 +1,15 @@
 <div class="card single-idea-card">
-<h5 class="card-header card-title">{{idea.idea.title}}<div class="float-right idea-score">{{idea.idea.points}}</div></h5>
+<h5 class="card-header card-title">{{idea.title}}<div class="float-right idea-score">{{idea.points}}</div></h5>
     <div class="card-body">
-        <p class="card-text">{{idea.idea.body}}</p>
-        <p class="card-text card-subtitle">{{idea.idea.createdAt}}</p>
+        <p class="card-text">{{idea.body}}</p>
+        <p class="card-text card-subtitle">{{idea.createdAt}}</p>
     </div>
 </div>
 
 <hr>
 
-{{#if this.idea.comments}}
-{{#each this.idea.comments}}
+{{#if this.comments}}
+{{#each this.comments}}
 
 <div class="card" style="background-color: #eee; margin-bottom: 5px;">
     <div class="card-body">
@@ -34,12 +34,12 @@
 </div>
 <div class="row">
     <div class="col-lg-3 col-md-6 text-center button-cont">
-        <button type="button" class="btn btn-danger comment-button" data-id={{idea.idea.id}} data-points={{idea.idea.points}}>
+        <button type="button" class="btn btn-danger comment-button" data-id={{idea.id}} data-points={{idea.points}}>
             <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-down fa-2x comment-button"></i></a>
         </button>
     </div>
     <div class="col-lg-3 col-md-6 text-center button-cont">
-        <button type="button" class="btn btn-success comment-button" data-id={{idea.idea.id}} data-points={{idea.idea.points}} data-upordown=true>
+        <button type="button" class="btn btn-success comment-button" data-id={{idea.id}} data-points={{idea.points}} data-upordown=true>
             <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-up fa-2x comment-button"></i></a>
         </button>
     </div>
