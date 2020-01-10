@@ -3,7 +3,7 @@ let db = require("../models");
 module.exports = function (app) {
   // Get all examples
   app.get("/api/ideas", function (req, res) {
-    db.Idea.findAll({}).then(function () {});
+    db.Idea.findAll({}).then(function () { });
   });
 
   // Creates new Idea
@@ -40,12 +40,12 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/api/delete", function(req,res){
+  app.post("/api/delete", function (req, res) {
     db.Idea.destroy({
-      where:{
+      where: {
         id: req.body.id
       }
-    }).then(function(){
+    }).then(function () {
       res.end();
     });
   });
