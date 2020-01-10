@@ -19,10 +19,10 @@ module.exports = (app) => {
 			group: ['Idea.id'],
 			order: [['id', 'DESC']]
 		})
-		// Promise.all([id, commentCount])
+			// Promise.all([id, commentCount])
 			.then(results => {
 				console.log(JSON.stringify(results))
-				res.render("index", { idea: results})
+				res.render("index", { idea: results })
 			})
 			.catch(err => {
 				console.log(err)
@@ -36,19 +36,18 @@ module.exports = (app) => {
 		const idea = db.Idea.findOne({
 			where: {
 				id: reqId
-			}})
+			}
+		})
 		const comments = db.Comment.findAll({
 			where: {
 				ideaId: reqId
 			}
 		})
-		Promise.all([idea,comments])
+		Promise.all([idea, comments])
 			.then(results => {
 				// console.log(JSON.stringify(results));
 				// console.log(JSON.stringify(results[1]));
-				res.render("idea", { idea: results[0],comments: results[1] });
-				
-
+				res.render("idea", { idea: results[0], comments: results[1] });
 			})
 			.catch(err => {
 				console.log(err)
