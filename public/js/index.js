@@ -51,7 +51,7 @@ $(document).ready(function () {
 	const ideaScore = parseInt($(".idea-score").html());
 	if (ideaScore > 0) {
 		$(".idea-score").html("+" + ideaScore)
-		$(".idea-score").css("color", "green");
+		$(".idea-score").css("color", "#27a745");
 	}
 	else if (ideaScore < 0) {
 		$(".idea-score").css("color", "#dc3545");
@@ -60,12 +60,20 @@ $(document).ready(function () {
 		$(".idea-score").css("color", "black");
 	}
 
-	$('h6[class="card-score"]').each(function(index){
-		console.log(index);
-		if (parseInt($(this).data('index'))>0){
-			$(this).css("color", "green");
+	for (var i = 1; i <= $(".card-score").length; i++){
+		const thisScore = parseInt($("#idea-card-"+i).data("index"));
+		if (thisScore>0){
+			$("#idea-card-"+i).html("+"+thisScore)
+			$("#idea-card-"+i).css("color","#27a745")
 		}
-	});
-	console.log("test2");
+		else if (thisScore<0){
+			$("#idea-card-"+i).css("color","#dc3545")
+		}
+		else {
+			$("#idea-card-"+i).css("color","black")
+		}
+		console.log(parseInt($("#idea-card-"+i).data("index")));
+		console.log("Number of Cards: " + $(".card-score").length);
+	}
 
 });
