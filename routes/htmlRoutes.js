@@ -66,8 +66,9 @@ module.exports = (app, passport) => {
 		res.render('login', { user: req.user })
 	});
 
-	app.get("/account", ensureAuthenticated, (req, res) => {
-		res.render("account", { user: req.user })
+	app.get("/profile", ensureAuthenticated, (req, res) => {
+		console.log("Test: "+JSON.stringify(req.user))
+		res.render("profile", { user: req.user })
 	})
 
 	app.get("/auth/facebook", passport.authenticate("facebook", {
@@ -75,7 +76,7 @@ module.exports = (app, passport) => {
 	}))
 
 	app.get("/auth/facebook/callback", passport.authenticate("facebook", {
-		successRedirect: "/",
+		successRedirect: "/profile",
 		failureRedirect: "/login"
 	}),
 		function (req, res) {
