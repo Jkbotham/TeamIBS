@@ -1,7 +1,7 @@
 const db = require("../models");
 
 
-module.exports = (app) => {
+module.exports = (app, passport) => {
 
 	// Load index page
 	app.get("/", (req, res) => {
@@ -22,7 +22,7 @@ module.exports = (app) => {
 			// Promise.all([id, commentCount])
 			.then(results => {
 				console.log(JSON.stringify(results))
-				res.render("index", { idea: results })
+				res.render("index", { idea: results, user: req.user })
 			})
 			.catch(err => {
 				console.log(err)
@@ -60,9 +60,44 @@ module.exports = (app) => {
 
 	app.get("/html")
 
+
+
+	app.get("/login", (req, res) => {
+		res.render('login', { user: req.user })
+	});
+
+	app.get("/account", ensureAuthenticated, (req, res) => {
+		res.render("account", { user: req.user })
+	})
+
+	app.get("/auth/facebook", passport.authenticate("facebook", {
+		scope: ["public_profile"]
+	}))
+
+	app.get("/auth/facebook/callback", passport.authenticate("facebook", {
+		successRedirect: "/",
+		failureRedirect: "/login"
+	}),
+		function (req, res) {
+			console.log(JSON.stringify(req.user))
+			// res.redirect("/")
+		}
+	);
+
+	app.get("/logout", (req, res) => {
+		req.logout()
+		res.redirect("/")
+	});
 	// Render 404 page for any unmatched routes
 	app.get("*", (req, res) => {
 		res.render("404");
 	});
+	function ensureAuthenticated(req, res, next) {
+		if (req.isAuthenticated()) { return next(); }
+		res.redirect('/login');
+	}
 
-};
+
+}
+
+
