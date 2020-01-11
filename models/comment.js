@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes){
     Comment.associate = function (models) {
         Comment.belongsTo(models.User,{
             foreignKey: {
-                allowNull: false
+                allowNull: true
             },
             onDelete: "cascade"
         });

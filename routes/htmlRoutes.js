@@ -64,7 +64,7 @@ module.exports = (app, passport) => {
 	});
 
 	app.get("/profile", ensureAuthenticated, (req, res) => {
-		db.User.findAll({
+		db.User.findOne({
 			where: {
 				user_id: req.user
 			}
@@ -72,7 +72,7 @@ module.exports = (app, passport) => {
 		.then((results) => {
 			console.log(results)
 
-		const user = db.Idea.findAll({
+		 let user = db.Idea.findAll({
 			where: { 
 				UserId: results.id
 			},
@@ -86,7 +86,7 @@ module.exports = (app, passport) => {
 			order: [['id', 'DESC']]
 		})
 
-		const comments = db.Comment.findAll({
+		 let comments = db.Comment.findAll({
 			where: {
 				UserId: results.id
 			}
@@ -95,7 +95,7 @@ module.exports = (app, passport) => {
 		
 		Promise.all([user,comments])
 			.then((Result) => {
-			console.log(Result, results)
+			console.log("Test:  ",Result, results)
 		})
 
 
