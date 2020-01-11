@@ -1,13 +1,25 @@
 const db = require("../models");
 
+
 module.exports = (app) => {
 
 	// Load index page
 	app.get("/", (req, res) => {
-		db.Idea.findAll({
-			include: [db.Comment],
+		// const id = db.Idea.findAll({
+		// 	include: [db.Comment],
+		// 	order: [['id', 'DESC']]
+		// })
+		const commentCount = db.Idea.findAll({
+			attributes: {
+				include: [[db.Sequelize.fn("count", db.Sequelize.col("comments.id")), "commentCount"]]
+			},
+			include: [{
+				model: db.Comment, attributes: []
+			}],
+			group: ['Idea.id'],
 			order: [['id', 'DESC']]
 		})
+			// Promise.all([id, commentCount])
 			.then(results => {
 				console.log(JSON.stringify(results))
 				res.render("index", { idea: results })
@@ -24,23 +36,18 @@ module.exports = (app) => {
 		const idea = db.Idea.findOne({
 			where: {
 				id: reqId
-			}})
+			}
+		})
 		const comments = db.Comment.findAll({
 			where: {
 				ideaId: reqId
 			}
 		})
-		Promise.all([idea,comments])
+		Promise.all([idea, comments])
 			.then(results => {
 				// console.log(JSON.stringify(results));
-				const obj = {
-					idea: results[0],
-					comments: results[1]
-				}
-				console.log(JSON.stringify(results[1]));
-				res.render("idea", { idea: obj });
-				
-
+				// console.log(JSON.stringify(results[1]));
+				res.render("idea", { idea: results[0], comments: results[1] });
 			})
 			.catch(err => {
 				console.log(err)

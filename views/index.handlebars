@@ -1,4 +1,5 @@
-    {{#each idea}}
+  {{#each idea}}
+
     <div class="card float-left idea-card" data-aos='fade-up'>
       <div class="card-body">
         <div class="card-top">
@@ -9,9 +10,9 @@
           <hr class="hr-strong">
           <h6 class="card-subtitle mb-2 text-muted">{{this.createdAt}}</h6>
           <a href="/idea/{{this.id}}" class="card-link"><i class="far fa-comment-dots fa-2x"></i></a>
-          <h6 class="card-score float-right">{{this.points}}</h6>
+          <h6 id="idea-card-{{this.id}}" class="card-score float-right" data-index={{this.points}} data-thisid={{this.id}}>{{this.points}}</h6>
         </div>
       </div>
     </div>
-
-{{/each}}
+  
+  {{/each}}

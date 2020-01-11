@@ -1,80 +1,10 @@
-.button {
-    background-color: #b5651d; 
-    border: 2px solid #b5651d;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 26px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 12px;
-  }
-  
-  .button:hover {
-    background-color: gray; 
-    color: black;
-  }
-
 .strong {
     border: 2px solid;
 }
-  .subButton{
-    position: relative;
-	display: block;
-	padding: 19px 39px 18px 39px;
-	color: #FFF;
-	margin: 0 auto;
-	font-size: 18px;
-	font-style: normal;
-	width:50%;
-	border: 1px solid black;
-	border-width: 1px 1px 3px;
-	margin-bottom: 10px;
-      background-color: #b5651d;
-      color:white;
-      margin:auto;
-  }
-
-/* #body,#title,.commentText {
-    text-align: left;
-    font-weight: bold;
-    font-size: 18px;
-	border-radius: 3px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border: 1px solid ;
-	outline: none;
-	padding: 5px 8px 5px 8px;
-	box-shadow: inset 1px 1px 4px ;
-	-moz-box-shadow: inset 1px 1px 4px ;
-	-webkit-box-shadow: inset 1px 1px 4px ;
-} */
-/* 
-#body{
-  width:400px;
-  height:100px;
-} */
-
-/* #title{
-  width:250px;
-  height:40px;
-} */
 
 .comment, .remove {
   width:175px;
   height:100px;
-}
-
-.subButton:hover{
-    background-color: gray; 
-    color: black;
-}
-
-.brd {
-    border: .1px solid ;
 }
 
 body {
@@ -110,11 +40,8 @@ font-size: .5em;
   display: none;
 }
 
-
-
 .card-bottom {
   max-height: 25%;
-  
 }
 
 .comment-button {
@@ -131,4 +58,47 @@ font-size: .5em;
   font-size: 12px;
   font-style: italic;
   color: red;
+}
+
+.card-score {
+  line-height: 2em;
+}
+
+.newIdea {
+  margin-bottom: 20px;
+  background-color: #007bfe
+}
+
+@media screen and (max-width: 991px){
+  .container {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    justify-content: space-between !important;
+  }
+  .idea-card {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 45%;
+    margin: 2.5%;
+  }
+  .comment-form {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .button-cont {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 591px){
+  .idea-card {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .comment-form {
+    width: 100%;
+  }
 }
