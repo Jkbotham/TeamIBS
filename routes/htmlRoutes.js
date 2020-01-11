@@ -52,7 +52,20 @@ module.exports = (app, passport) => {
 	});
 
 	app.get("/submit", (req, res) => {
-		res.render("submit")
+		if (req.user) {
+			db.User.findAll({
+				where: {
+					user_id: req.user
+				}
+			}).then((results) => {
+				console.log("Test: "+JSON.stringify(results))
+				res.render("submit", { user: results[0] })
+	
+			})
+		}
+		else {
+			res.render("submit")
+		}
 	})
 
 	app.get("/html")
@@ -72,7 +85,7 @@ module.exports = (app, passport) => {
 		.then((results) => {
 			console.log(results)
 
-		 let user = db.Idea.findAll({
+		 let ideas = db.Idea.findAll({
 			where: { 
 				UserId: results.id
 			},
@@ -93,19 +106,15 @@ module.exports = (app, passport) => {
 		})
 		
 		
-		Promise.all([user,comments])
+		Promise.all([ideas,comments])
 			.then((Result) => {
-			console.log("Test:  ",Result, results)
+			console.log("Test:  ", Result, results)
+				res.render("profile", { user: results[0], ideas: Result[0], comments: Result[1] })
 		})
 
 
 		})
 		
-		// .then((results) => {
-		// 	console.log("Test: "+JSON.stringify(results))
-		// 	res.render("profile", { user: results[0] })
-
-		// })
 	
 	})
 

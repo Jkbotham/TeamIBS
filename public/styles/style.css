@@ -31,7 +31,7 @@ font-size: .5em;
 }
 
 .card-top {
-  height: 65%;
+  height: 65% !important;
   overflow: scroll;
   -ms-overflow-style: none;
 }
