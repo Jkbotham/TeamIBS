@@ -5,11 +5,8 @@ module.exports = (app, passport) => {
 
 	// Load index page
 	app.get("/", (req, res) => {
-		// const id = db.Idea.findAll({
-		// 	include: [db.Comment],
-		// 	order: [['id', 'DESC']]
-		// })
-		const commentCount = db.Idea.findAll({
+
+		db.Idea.findAll({
 			attributes: {
 				include: [[db.Sequelize.fn("count", db.Sequelize.col("Comments.id")), "commentCount"]]
 			},
@@ -71,11 +68,44 @@ module.exports = (app, passport) => {
 			where: {
 				user_id: req.user
 			}
-		}).then((results) => {
-			console.log("Test: "+JSON.stringify(results))
-			res.render("profile", { user: results[0] })
+		})
+		.then((results) => {
+			console.log(results)
+
+		const user = db.Idea.findAll({
+			where: { 
+				UserId: results.id
+			},
+			attributes: {
+				include: [[db.Sequelize.fn("count", db.Sequelize.col("Comments.id")), "commentCount"]]
+			},
+			include: [{
+				model: db.Comment, attributes: []
+			}],
+			group: ['Idea.id'],
+			order: [['id', 'DESC']]
+		})
+
+		const comments = db.Comment.findAll({
+			where: {
+				UserId: results.id
+			}
+		})
+		
+		
+		Promise.all([user,comments])
+			.then((Result) => {
+			console.log(Result, results)
+		})
+
 
 		})
+		
+		// .then((results) => {
+		// 	console.log("Test: "+JSON.stringify(results))
+		// 	res.render("profile", { user: results[0] })
+
+		// })
 	
 	})
 
@@ -101,12 +131,22 @@ module.exports = (app, passport) => {
 	app.get("*", (req, res) => {
 		res.render("404");
 	});
+
 	function ensureAuthenticated(req, res, next) {
 		if (req.isAuthenticated()) { return next(); }
 		res.redirect('/login');
 	}
 
+	app.get("/best", (req, res) => {
+		res.render("index", {idea: results, comments: results})
+	})
+
 
 }
+
+
+// Count of comments from one user
+// Count of ideas from one user
+
 
 

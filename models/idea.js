@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
     Idea.associate = function (models) {
         Idea.belongsTo(models.User,{
             foreignKey: {
-                allowNull: false
+                allowNull: true
             },
             onDelete: "cascade"
         });
