@@ -12,13 +12,13 @@ module.exports = function (Sequelize, DataTypes) {
         createdAt: {
             type: DataTypes.DATE,                  
           get() {
-                return moment(this.getDataValue('createdAt')).format('MM/DD/YYYY h:mm:ss');
+                return moment(this.getDataValue('createdAt')).format('MM/DD/YYYY h:mm:ss a');
             }
         },
         updatedAt: {
             type: DataTypes.DATE,
             get() {
-                return moment(this.getDataValue('updatedAt')).format('MM/DD/YYYY h:mm:ss');
+                return moment(this.getDataValue('updatedAt')).format('MM/DD/YYYY h:mm:ss a');
             }
         }        
     });
