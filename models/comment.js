@@ -21,16 +21,18 @@ module.exports = function(sequelize, DataTypes){
             }
         }
     });
+
     Comment.associate = function (models) {
-        Comment.belongsTo(models.user,{
+        Comment.belongsTo(models.Idea,{
             foreignKey: {
                 allowNull: false
             },
             onDelete: "cascade"
         });
     };
+
     Comment.associate = function (models) {
-        Comment.belongsTo(models.Idea,{
+        Comment.belongsTo(models.User,{
             foreignKey: {
                 allowNull: false
             },

@@ -30,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Idea.associate = function (models) {
-        Idea.belongsTo(models.user,{
+        Idea.belongsTo(models.User,{
             foreignKey: {
                 allowNull: false
             },
