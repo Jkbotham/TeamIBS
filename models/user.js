@@ -11,6 +11,16 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.STRING
         }
-    })
+        
+    });
+
+    User.associate = function (models) {
+        User.hasMany(models.Comment, {});
+    };
+
+    User.associate = function (models) {
+        User.hasMany(models.Idea, {});
+    };
+
     return User
 }
