@@ -9,9 +9,10 @@ module.exports = (app) => {
 		// 	include: [db.Comment],
 		// 	order: [['id', 'DESC']]
 		// })
-		const commentCount = db.Idea.findAll({
+		// const commentCount = 
+		db.Idea.findAll({
 			attributes: {
-				include: [[db.Sequelize.fn("count", db.Sequelize.col("comments.id")), "commentCount"]]
+				include: [[db.Sequelize.fn("count", db.Sequelize.col("Comments.id")), "commentCount"]]
 			},
 			include: [{
 				model: db.Comment, attributes: []
