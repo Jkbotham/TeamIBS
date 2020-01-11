@@ -27,7 +27,7 @@ module.exports = (app, passport) => {
                             user_id: profile.id
                         }
                     }).then((results) => {
-                        if (results) {
+                        if (results[0]) {
                             console.log("User already exists")
                         } else {
                             db.User.create({

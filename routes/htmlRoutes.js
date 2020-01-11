@@ -11,7 +11,7 @@ module.exports = (app, passport) => {
 		// })
 		const commentCount = db.Idea.findAll({
 			attributes: {
-				include: [[db.Sequelize.fn("count", db.Sequelize.col("comments.id")), "commentCount"]]
+				include: [[db.Sequelize.fn("count", db.Sequelize.col("Comments.id")), "commentCount"]]
 			},
 			include: [{
 				model: db.Comment, attributes: []
@@ -67,8 +67,16 @@ module.exports = (app, passport) => {
 	});
 
 	app.get("/profile", ensureAuthenticated, (req, res) => {
-		console.log("Test: "+JSON.stringify(req.user))
-		res.render("profile", { user: req.user })
+		db.User.findAll({
+			where: {
+				user_id: req.user
+			}
+		}).then((results) => {
+			console.log("Test: "+JSON.stringify(results))
+			res.render("profile", { user: results[0] })
+
+		})
+	
 	})
 
 	app.get("/auth/facebook", passport.authenticate("facebook", {
@@ -76,12 +84,12 @@ module.exports = (app, passport) => {
 	}))
 
 	app.get("/auth/facebook/callback", passport.authenticate("facebook", {
-		// successRedirect: "/profile",
+		successRedirect: "/profile",
 		failureRedirect: "/login"
 	}),
 		function (req, res) {
 			console.log(JSON.stringify(req.user))
-			res.redirect("/profile", {user: req.user})
+			// res.redirect("profile", {user: req.user})
 		}
 	);
 
