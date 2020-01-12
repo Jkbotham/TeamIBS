@@ -51,4 +51,14 @@ module.exports = function (app) {
       res.end();
     });
   });
+
+  app.post("/api/deleteComment", function (req, res) {
+    db.Comment.destroy({
+      where: {
+        id: req.body.id
+      }
+    }).then(function () {
+      res.end();
+    })
+  })
 };

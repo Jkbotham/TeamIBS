@@ -63,6 +63,16 @@ $(document).ready(function () {
 		});
 	})
 
+	$(".remove-comment").on("click", function (event) {
+		event.preventDefault();
+
+		const remove = { id: $(this).data().id }
+
+		$.post("/api/deleteComment", remove).then(function () {
+			window.location.reload();
+		});
+	})
+
 	const ideaScore = parseInt($(".idea-score").html());
 	if (ideaScore > 0) {
 		$(".idea-score").html("+" + ideaScore)

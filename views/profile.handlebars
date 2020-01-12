@@ -17,7 +17,7 @@
     <div class="card float-left idea-card" data-aos='fade-up'>
       <div class="card-body">
         <div class="card-top">
-          <h5 class="card-title">{{this.title}}</h5>
+          <h5 class="card-title">{{this.title}}{{this.comments}}</h5>
           <p class="card-text">{{this.body}}</p>
         </div>
         <div class="card-bottom">
@@ -39,6 +39,7 @@
 
 <div class="card center-block" style="background-color: #eee; margin: 0 auto; margin-bottom: 5px; width: 98%" data-aos='zoom-in'>
     <div class="card-body">
+        <i class="remove-comment remove-button far fa-times-circle fa-2x float-right" data-id={{this.id}}></i>
         <p class="card-text">{{this.body}}</p>
         <p class="card-text card-subtitle">{{this.createdAt}}</p>
     </div>

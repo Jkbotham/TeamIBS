@@ -16,7 +16,7 @@ module.exports = (app, passport) => {
 			order: [['id', 'DESC']]
 		})
 			.then(results => {
-				// console.log(JSON.stringify(results))
+				console.log(JSON.stringify(results))
 				res.render("index", { idea: results, user: req.user })
 			})
 			.catch(err => {
@@ -79,7 +79,7 @@ module.exports = (app, passport) => {
 			order: [['points', 'DESC']]
 		})
 			.then(results => {
-				// console.log(JSON.stringify(results))
+				console.log(JSON.stringify(results))
 				res.render("index", { idea: results, user: req.user })
 			})
 			.catch(err => {
