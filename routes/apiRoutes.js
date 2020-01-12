@@ -61,4 +61,25 @@ module.exports = function (app) {
       res.end();
     })
   })
+
+  app.post("/api/updateIdea", (req, res) => {
+    db.Idea.update({
+      title: req.body.title,
+      body: req.body.body
+    },{
+      where: {
+        id: req.body.id
+      }
+    })
+  })
+
+  app.post("/api/updateComment", (req, res) => {
+    db.Comment.update({
+      body: req.body.body
+    },{
+      where: {
+        id: req.body.id
+      }
+    })
+  })
 };
