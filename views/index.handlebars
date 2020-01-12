@@ -9,7 +9,7 @@
         <div class="card-bottom">
           <hr class="hr-strong">
           <h6 class="card-subtitle mb-2 text-muted">{{this.createdAt}}</h6>
-          <a href="/idea/{{this.id}}" class="card-link"><i class="far fa-comment-dots fa-2x"></i></a>
+          <a href="/idea/{{this.id}}" class="card-link"><i class="far fa-comment-dots fa-2x"></i></a>{{this.comments.length}}
           <h6 id="idea-card-{{this.id}}" class="card-score float-right" data-index={{this.points}} data-thisid={{this.id}}>{{this.points}}</h6>
         </div>
       </div>

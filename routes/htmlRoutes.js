@@ -65,6 +65,28 @@ module.exports = (app, passport) => {
 		}
 	});
 
+	// Load index sorted by highest score
+	app.get("/best", (req, res) => {
+
+		db.Idea.findAll({
+			attributes: {
+				include: [[db.Sequelize.fn("count", db.Sequelize.col("Comments.id")), "commentCount"]]
+			},
+			include: [{
+				model: db.Comment, attributes: []
+			}],
+			group: ['Idea.id'],
+			order: [['points', 'DESC']]
+		})
+			.then(results => {
+				// console.log(JSON.stringify(results))
+				res.render("index", { idea: results, user: req.user })
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	});
+
 	// Sends client submit page // If user is logged in query database and return users unique id
 	app.get("/submit", (req, res) => {
 		if (req.user) {
