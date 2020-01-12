@@ -23,8 +23,10 @@
         <div class="card-bottom">
           <hr class="hr-strong">
           <h6 class="card-subtitle mb-2 text-muted">{{this.createdAt}}</h6>
-          <a href="/idea/{{this.id}}" class="card-link"><i class="far fa-comment-dots fa-2x"></i></a>
-          <h6 id="idea-card-{{this.id}}" class="card-score float-right" data-index={{this.points}} data-thisid={{this.id}}>{{this.points}}</h6>
+          <a href="/idea/{{this.id}}" class="card-link"><i class="far fa-comment-dots fa-2x float-left"></i></a><i class="remove remove-button far fa-times-circle fa-2x float-left" data-id={{this.id}}></i>
+          <div class="float-right">
+            <h6 id="idea-card-{{this.id}}" class="card-score inline-block" data-index={{this.points}} data-thisid={{this.id}}>{{this.points}}</h6>
+          </div>
         </div>
       </div>
     </div>

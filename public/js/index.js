@@ -75,22 +75,47 @@ $(document).ready(function () {
 		$(".idea-score").css("color", "black");
 	}
 
-	const maxCardId = parseInt($(".card-score").first().data("thisid"));
+	const firstCardId = parseInt($(".card-score").first().data("thisid"));
+	const cardsLength = $(".card-score").length;
+	let highestID = 0;
 
-	for (var i = 1; i <= maxCardId; i++){
-		const thisScore = parseInt($("#idea-card-"+i).data("index"));
-		if (thisScore>0){
-			$("#idea-card-"+i).html("+"+thisScore)
-			$("#idea-card-"+i).css("color","#27a745")
+	if (cardsLength > firstCardId) {
+		for (var i = 1; i < cardsLength; i++){
+			let thisCardId = parseInt($(".idea-card:nth-of-type("+i+")").data("thisid"));
+			if (thisCardId > highestID){
+				highestID = thisCardId;
+			}
+		}	
+	}
+	if (firstCardId<highestID){
+		for (var i = 1; i < highestID; i++) {
+			const thisScore = parseInt($("#idea-card-"+i).data("index"));
+				if (thisScore>0){
+					$("#idea-card-"+i).html("+"+thisScore)
+					$("#idea-card-"+i).css("color","#27a745")
+				}
+				else if (thisScore<0){
+					$("#idea-card-"+i).css("color","#dc3545")
+				}
+				else {
+					$("#idea-card-"+i).css("color","black")
+				}
 		}
-		else if (thisScore<0){
-			$("#idea-card-"+i).css("color","#dc3545")
+	}
+	else {
+		for (var i = 1; i <= firstCardId; i++){
+			const thisScore = parseInt($("#idea-card-"+i).data("index"));
+			if (thisScore>0){
+				$("#idea-card-"+i).html("+"+thisScore)
+				$("#idea-card-"+i).css("color","#27a745")
+			}
+			else if (thisScore<0){
+				$("#idea-card-"+i).css("color","#dc3545")
+			}
+			else {
+				$("#idea-card-"+i).css("color","black")
+			}
 		}
-		else {
-			$("#idea-card-"+i).css("color","black")
-		}
-		// console.log(parseInt($("#idea-card-"+i).data("index")));
-		// console.log("Number of Cards: " + $(".card-score").length);
 	}
 
 });
