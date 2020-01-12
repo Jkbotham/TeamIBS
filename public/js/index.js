@@ -22,17 +22,30 @@ $(document).ready(function () {
 		const point = $(this).data().points
 		const upOrDown = $(this).data().upordown
 		const bodyText = $(".comment-form").val();
-		
-		console.log(bodyText)
-		let comment = {
-			ideaID: id,
-			body: bodyText,
-			points: point,
-			vote: upOrDown
+		let userid = $(this).data().userid;
+		let comment;
+		if (userid > 0){
+			comment = {
+				ideaID: id,
+				body: bodyText,
+				points: point,
+				userID: userid,
+				vote: upOrDown
+			}
 		}
+		else {
+			comment = {
+				ideaID: id,
+				body: bodyText,
+				points: point,
+				vote: upOrDown
+			}
+
+		}
+		
 		if (bodyText) {
 			$.post("/api/newComment", comment).then(function () {
-				location.reload();
+				window.location.reload();
 			});
 		}
 		else ($(".warning-div").html("<br>You must enter a comment to vote."));
@@ -61,7 +74,6 @@ $(document).ready(function () {
 	}
 
 	const maxCardId = parseInt($(".card-score").first().data("thisid"));
-	console.log(maxCardId);
 
 	for (var i = 1; i <= maxCardId; i++){
 		const thisScore = parseInt($("#idea-card-"+i).data("index"));

@@ -40,26 +40,44 @@ module.exports = (app, passport) => {
 				ideaId: reqId
 			}
 		})
-		Promise.all([idea, comments])
+		if (req.user) {
+			const user = db.User.findOne({
+				where: {
+					user_id: req.user
+				}
+			})
+			Promise.all([idea, comments, user])
 			.then(results => {
-				// console.log(JSON.stringify(results));
-				// console.log(JSON.stringify(results[1]));
-				res.render("idea", { idea: results[0], comments: results[1] });
+
+				res.render("idea", { idea: results[0], comments: results[1], user: results[2] });
 			})
 			.catch(err => {
 				console.log(err)
 			})
-	});
+	
+			}
+			else {
+				Promise.all([idea, comments])
+					.then(results => {
+						// console.log(JSON.stringify(results));
+						// console.log(JSON.stringify(results[1]));
+						res.render("idea", { idea: results[0], comments: results[1] });
+					})
+					.catch(err => {
+						console.log(err)
+					})
+			}
+		});
 
 	app.get("/submit", (req, res) => {
 		if (req.user) {
-			db.User.findAll({
+			db.User.findOne({
 				where: {
 					user_id: req.user
 				}
 			}).then((results) => {
 				console.log("Test: "+JSON.stringify(results))
-				res.render("submit", { user: results[0] })
+				res.render("submit", { user: results })
 	
 			})
 		}
@@ -109,7 +127,7 @@ module.exports = (app, passport) => {
 		Promise.all([ideas,comments])
 			.then((Result) => {
 			console.log("Test:  ", Result, results)
-				res.render("profile", { user: results[0], ideas: Result[0], comments: Result[1] })
+				res.render("profile", { user: results, ideas: Result[0], comments: Result[1] })
 		})
 
 

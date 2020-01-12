@@ -22,6 +22,7 @@ module.exports = function (app) {
   app.post("/api/newComment", function (req, res) {
     db.Comment.create({
       body: req.body.body,
+      UserId: req.body.userID,
       IdeaId: req.body.ideaID
     });
 
