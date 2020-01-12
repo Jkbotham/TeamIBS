@@ -21,7 +21,7 @@
   <a class="nav-item nav-link left" style="color: #ccc" href="/profile">Profile</a>
   <a class="nav-item nav-link left" style="color: #ccc" href="/submit">Submit</a>
   <a class="nav-item nav-link left" style="color: #ccc" href="/best">Best</a>
-  <a class="nav-item nav-link left" style="color: #ccc" href="/logout">Logout</a>
+  <a class="nav-item nav-link left" style="color: #ccc" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
 </nav>
 
 <body>
@@ -29,6 +29,27 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
+
+<!-- Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutM" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutMTitle">Logout</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to log out?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <a href="/logout"><button type="button" class="btn btn-primary">Logout</button></a>
+      </div>
+    </div>
+  </div>
+</div>
 
           {{{ body }}}
 
