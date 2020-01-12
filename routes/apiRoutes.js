@@ -12,6 +12,7 @@ module.exports = function (app) {
     db.Idea.create({
       title: req.body.title,
       body: req.body.body,
+      UserId: req.body.userID,
       points: 0
     }).then(function (results) {
       res.end();

@@ -1,13 +1,18 @@
-<div class="card profile-card" style="width: 16rem;">
+<div class="card idea-card float-left profile-card" style="width: 16rem;">
     <div class="card-top">
         <img src="https://graph.facebook.com/{{user.user_id}}/picture?type=large" class="card-img-top" alt="Your Beautiful Face">
     </div>
-  <div class="card-body">
-    <h5 class="card-title">{{user.user_displayName}}</h5>
-  </div>
+    <div class="card-body prof-bot text-center">
+        <h5 class="card-title" style="margin-bottom: 0;">{{user.user_displayName}}</h5>
+        <hr style="padding: 5px; margin: 0;">
+        <h6>Ideas: {{ideas.length}}</h6>
+        <h6>Comments: {{comments.length}}</h6>
+    </div>
+
+
 </div>
 
-  {{#each idea}}
+  {{#each ideas}}
 
     <div class="card float-left idea-card" data-aos='fade-up'>
       <div class="card-body">
@@ -25,3 +30,17 @@
     </div>
   
   {{/each}}
+
+
+{{#if this.comments}}
+{{#each this.comments}}
+
+<div class="card center-block" style="background-color: #eee; margin: 0 auto; margin-bottom: 5px; width: 98%" data-aos='zoom-in'>
+    <div class="card-body">
+        <p class="card-text">{{this.body}}</p>
+        <p class="card-text card-subtitle">{{this.createdAt}}</p>
+    </div>
+</div>
+
+{{/each}}
+{{/if}}

@@ -5,11 +5,13 @@ $(document).ready(function () {
 	$(".newIdea").on("click", function (event) {
 		event.preventDefault();
 
+		let userid = $(this).data().userid
 		let newIdea = {
-			title: $("#title").val().trim(),
-			body: $("#body").val().trim()
-		}
-
+				title: $("#title").val().trim(),
+				body: $("#body").val().trim(),
+				userID: userid
+			}
+		
 		$.post("/api/newIdea", newIdea).then(function () {
 			window.location.replace("/");
 		});

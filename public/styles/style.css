@@ -69,6 +69,15 @@ font-size: .5em;
   background-color: #007bfe
 }
 
+.profile-card img {
+  width: 100% !important;
+  margin-top: -10%;
+}
+
+.prof-bot {
+  padding-top: 5px;
+}
+
 @media screen and (max-width: 991px){
   .container {
     max-width: 100% !important;
