@@ -45,8 +45,8 @@
 <div class="card center-block" style="background-color: #eee; margin: 0 auto; margin-bottom: 5px; width: 98%" data-aos='zoom-in'>
     <div class="card-body">
         <i class="remove-comment remove-button far fa-times-circle float-right" data-id={{this.id}}></i>
-        <i class="edit edit-comment far fa-edit float-right" data-id={{this.id}} data-toggle="modal" data-target="#editModal"></i>
-        <p class="card-text">{{this.body}}</p>
+        <i class="edit edit-comment far fa-edit float-right" data-id={{this.id}} data-toggle="modal" data-target="#commentModal"></i>
+        <p class="card-text comment-body">{{this.body}}</p>
         <p class="card-text card-subtitle">{{this.createdAt}}</p>
     </div>
 </div>
@@ -78,6 +78,31 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary save-edit" data-id="">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="commentModalLabel">Update Comment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="edit-text" class="col-form-label">Body</label>
+            <textarea class="form-control" id="comment-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary save-comment" data-id="">Save</button>
       </div>
     </div>
   </div>
