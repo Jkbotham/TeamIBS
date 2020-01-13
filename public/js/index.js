@@ -40,7 +40,6 @@ $(document).ready(function () {
 				points: point,
 				vote: upOrDown
 			}
-
 		}
 		
 		if (bodyText) {

@@ -15,16 +15,17 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-var sequelize = new Sequelize(
+let sequelize = new Sequelize(
 	process.env.MYSQL_DBNAME,
 	process.env.MYSQL_USER,
 	process.env.MYSQL_KEY, {
-		"dialect": "sqlite",
-		"storage": "./session.sqlite"
-	});
-	var database = new SequelizeStore({
-		db: sequelize
-	})
+	"dialect": "sqlite",
+	"storage": "./session.sqlite"
+});
+
+let database = new SequelizeStore({
+	db: sequelize
+});
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -37,18 +38,16 @@ app.use(cookieParser());
 app.use(session({
 	secret: 'meow',
 	store: database,
-	resave: false // we support the touch method so per the express-session docs this should be set to false
-	// proxy: true // if you do SSL outside of node.
-  }))
+	resave: false
+}));
 
-  database.sync();
+database.sync();
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Sets rendering package
 app.engine("handlebars", exphbs({ defualtLayout: "main" }));
 app.set("view engine", "handlebars");
-
 
 // Routes
 // =============================================================

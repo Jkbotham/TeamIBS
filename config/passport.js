@@ -40,7 +40,6 @@ module.exports = (app, passport) => {
                 // console.log(profile)
                 return done(null, profile);
             });
-
         }
     ));
 
