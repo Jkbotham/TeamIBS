@@ -44,6 +44,7 @@ module.exports = (app, passport) => {
 					user_id: req.user
 				}
 			})
+			
 			Promise.all([idea, comments, user])
 				.then(results => {
 					res.render("idea", { idea: results[0], comments: results[1], user: results[2] });
@@ -134,11 +135,12 @@ module.exports = (app, passport) => {
 				let comments = db.Comment.findAll({
 					where: {
 						UserId: results.id
-					}
+					},
+					order: [['id', 'DESC']]
 				})
 				Promise.all([ideas, comments])
 					.then((Result) => {
-						console.log("Test:  ", Result, results)
+						// console.log("Test:  ", Result, results)
 						res.render("profile", { user: results, ideas: Result[0], comments: Result[1] })
 					})
 			})
@@ -155,7 +157,7 @@ module.exports = (app, passport) => {
 		failureRedirect: "/index"
 	}),
 		function (req, res) {
-			console.log(JSON.stringify(req.user))
+			// console.log(JSON.stringify(req.user))
 			// res.redirect("profile", {user: req.user})
 		}
 	);
