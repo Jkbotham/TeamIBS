@@ -38,7 +38,7 @@
   </nav>
 
   <body>
-    <!-- Modal -->
+    <!-- Logout Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutM" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Login Modal -->
     <div class="modal fade" id="fbModal" tabindex="-1" role="dialog" aria-labelledby="continueWithFaceBook"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -85,35 +85,13 @@
       <div class="row">
         <div class="col-md-12">
 
-
-
           {{{ body }}}
 
         </div>
       </div>
     </div>
-    {{!-- 
-<script>
-  window.fbAsyncInit = function () {
-    FB.init({
-      appId: '{your-app-id}',
-      cookie: true,
-      xfbml: true,
-      version: '{api-version}'
-    });
 
-    FB.AppEvents.logPageView();
 
-  };
-
-  (function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) { return; }
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script> --}}
     <script src="/js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
