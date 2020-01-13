@@ -52,7 +52,7 @@ module.exports = (app, passport) => {
 				.catch(err => {
 					console.log(err)
 				})
-		}else {
+		} else {
 			Promise.all([idea, comments])
 				.then(results => {
 					// console.log(JSON.stringify(results));
@@ -155,7 +155,7 @@ module.exports = (app, passport) => {
 	//Switch used ot direct a successful login to the userpage or back to login if the auth was unsuccessful
 	app.get("/auth/facebook/callback", passport.authenticate("facebook", {
 		successRedirect: "/profile",
-		failureRedirect: "/login"
+		failureRedirect: "/index"
 	}),
 		function (req, res) {
 			console.log(JSON.stringify(req.user))
