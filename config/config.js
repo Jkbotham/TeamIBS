@@ -6,8 +6,8 @@ module.exports = {
 		"password": process.env.MYSQL_KEY,
 		"database": process.env.MYSQL_DBNAME,
 		"host": process.env.MYSQL_HOST,
-		"port": 3306,
-		"dialect": "mysql"
+		"dialect": "mysql",
+		"operatorsAliases": false
 	},
 	"test": {
 		"username": process.env.MYSQL_USER,
