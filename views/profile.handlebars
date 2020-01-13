@@ -15,20 +15,25 @@
   {{#each ideas}}
 
     <div class="card float-left idea-card" data-aos='fade-up'>
-      <div class="card-body">
-        <div class="card-top">
-          <h5 class="card-title">{{this.title}}{{this.comments}}</h5>
-          <p class="card-text">{{this.body}}</p>
+        <div class="card-body">
+            <div class="card-top">
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text">{{this.body}}</p>
+            </div>
+            <div class="card-bottom">
+                <hr class="hr-strong">
+                <h6 class="card-subtitle mb-2 text-muted">{{this.createdAt}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted text-right" style="position: absolute; right: 20px; margin-top: -18px;"> {{this.dataValues.commentCount}} comments</h6>
+                <a href="/idea/{{this.id}}" class="card-link">
+                    <i class="far fa-comment-dots fa-2x float-left"></i>
+                </a>
+                <i class="edit edit-button far fa-edit float-left" data-id={{this.id}} data-toggle="modal" data-target="#editModal"></i>
+                <i class="remove remove-button far fa-times-circle float-left" data-id={{this.id}}></i>
+                <div class="float-right">
+                    <h6 id="idea-card-{{this.id}}" class="card-score inline-block" data-index={{this.points}} data-thisid={{this.id}}>{{this.points}}</h6>
+                </div>
+            </div>
         </div>
-        <div class="card-bottom">
-          <hr class="hr-strong">
-          <h6 class="card-subtitle mb-2 text-muted">{{this.createdAt}}</h6><h6 class="card-subtitle mb-2 text-muted text-right" style="position: absolute; right: 20px; margin-top: -18px;"> {{this.dataValues.commentCount}} comments</h6>
-          <a href="/idea/{{this.id}}" class="card-link"><i class="far fa-comment-dots fa-2x float-left"></i></a><i class="remove remove-button far fa-times-circle fa-2x float-left" data-id={{this.id}}></i>
-          <div class="float-right">
-            <h6 id="idea-card-{{this.id}}" class="card-score inline-block" data-index={{this.points}} data-thisid={{this.id}}>{{this.points}}</h6>
-          </div>
-        </div>
-      </div>
     </div>
   
   {{/each}}
@@ -39,7 +44,8 @@
 
 <div class="card center-block" style="background-color: #eee; margin: 0 auto; margin-bottom: 5px; width: 98%" data-aos='zoom-in'>
     <div class="card-body">
-        <i class="remove-comment remove-button far fa-times-circle fa-2x float-right" data-id={{this.id}}></i>
+        <i class="remove-comment remove-button far fa-times-circle float-right" data-id={{this.id}}></i>
+        <i class="edit edit-comment far fa-edit float-right" data-id={{this.id}} data-toggle="modal" data-target="#editModal"></i>
         <p class="card-text">{{this.body}}</p>
         <p class="card-text card-subtitle">{{this.createdAt}}</p>
     </div>
@@ -47,3 +53,32 @@
 
 {{/each}}
 {{/if}}
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Update Idea</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="edit-title" class="col-form-label">Title</label>
+            <h4 id="title-text"></h4>
+          </div>
+          <div class="form-group">
+            <label for="edit-text" class="col-form-label">Body</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary save-edit" data-id="">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

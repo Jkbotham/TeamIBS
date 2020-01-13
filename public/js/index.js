@@ -128,4 +128,51 @@ $(document).ready(function () {
 		}
 	}
 
+	$(".edit-button").on("click", function(event){
+		// console.log($(this).closest(".card-top").children(".card-title").text());
+		event.preventDefault();
+		const thisid = $(this).data("id");
+		const thisTitle = $(this).parent().parent().children().children("h5").text();
+		const thisBody = $(this).parent().parent().children().children("p").text();
+		console.log("eid:" +thisid);
+		$('#editModal').on('show.bs.modal', function (event) {
+				var modal = $(this)
+				modal.find('#title-text').text(thisTitle)
+				modal.find('#message-text').val(thisBody);		
+				modal.find(".save-edit").data("id",thisid);
+				console.log("mid: " + $(".save-edit").data("id"));
+		})
+	});
+
+	$(".save-edit").on("click", function(event){
+		event.preventDefault();
+		const thisid = $(this).data("id")
+		const thisBody = $("#message-text").val();
+		console.log("thisid: "+thisid)
+		console.log("thisBody: "+thisBody)
+		let editedComment = {
+			id: thisid,
+			body: thisBody
+		}
+		console.log(thisid);
+		$.post("/api/updateIdea", editedComment).then(function(){
+			window.location.reload();
+		})
+	})
+
+
+	// $('#editModal').on('show.bs.modal', function (event) {
+	// 	// var button = $(event.relatedTarget) // Button that triggered the modal
+	// 	// var title = button.data('title')
+	// 	// var body = button.data('body')
+	// 	// var id = button.data('thisid')
+	// 	// var modal = $(this)
+	// 	// modal.find('#title-text').text(title)
+	// 	// modal.find('#message-text').text(body)
+	// 	var body = $(".edit-button").data("body")
+	// 	("#message-text").html(body)
+		
+
+	//   })
+
 });

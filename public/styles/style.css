@@ -78,16 +78,53 @@ font-size: .5em;
   padding-top: 5px;
 }
 
+.edit-comment {
+  color: #ffbb66; 
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.edit-comment:hover {
+  cursor: pointer;
+  color: #dd8000;
+}
+
 .remove-button{
   color: #dc3545; 
-  width: 30px; 
-  height: 30px; 
-  padding-left: 5px;
+  position: absolute;
+  margin-top: 12px;
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
 }
 
 .remove-button:hover{
   cursor: pointer;
   color: #bb0000;
+}
+
+.edit-button {
+  color: #ffbb66; 
+  margin-left: 5px;
+  margin-top: 12px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.edit-button:hover {
+  cursor: pointer;
+  color: #dd8000;
+}
+
+.remove-comment {
+  margin-top: 0;
+  position: relative;
+  width: 16px;
+  height: 16px;
 }
 
 @media screen and (max-width: 991px){
