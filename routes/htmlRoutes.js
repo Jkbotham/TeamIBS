@@ -16,7 +16,7 @@ module.exports = (app, passport) => {
 			order: [['id', 'DESC']]
 		})
 			.then(results => {
-				console.log(JSON.stringify(results))
+				// console.log(JSON.stringify(results))
 				res.render("index", { idea: results, user: req.user })
 			})
 			.catch(err => {
@@ -46,7 +46,6 @@ module.exports = (app, passport) => {
 			})
 			Promise.all([idea, comments, user])
 				.then(results => {
-
 					res.render("idea", { idea: results[0], comments: results[1], user: results[2] });
 				})
 				.catch(err => {
@@ -79,7 +78,7 @@ module.exports = (app, passport) => {
 			order: [['points', 'DESC']]
 		})
 			.then(results => {
-				console.log(JSON.stringify(results))
+				// console.log(JSON.stringify(results))
 				res.render("index", { idea: results, user: req.user })
 			})
 			.catch(err => {
@@ -97,7 +96,6 @@ module.exports = (app, passport) => {
 			}).then((results) => {
 				// console.log("Test: " + JSON.stringify(results))
 				res.render("submit", { user: results })
-
 			})
 		}
 		else {
@@ -118,8 +116,7 @@ module.exports = (app, passport) => {
 			}
 		})
 			.then((results) => {
-				console.log(results)
-
+				// console.log(results)
 				let ideas = db.Idea.findAll({
 					where: {
 						UserId: results.id
