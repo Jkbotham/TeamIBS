@@ -23,7 +23,7 @@ module.exports = {
 	},
 	"facebook_api_key": "878033375944351",
 	"facebook_api_secret":"07bedf82212416f6021d618f35862cc1",
-	"call_back_url": "http://teamibs.herokuapp.com/auth/facebook/callback",
+	"call_back_url": "https://teamibs.herokuapp.com/auth/facebook/callback",
 	"use_database": true,
 	"host": "localhost",
 	"username": "root",
