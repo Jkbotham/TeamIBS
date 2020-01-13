@@ -7,5 +7,9 @@
     <label for="body">Body</label>
     <textarea class="form-control" rows="12" id="body" placeholder="Enter idea body"></textarea>
   </div>
+  {{#if user.id}}
   <button type="submit" class="btn btn-primary newIdea" data-userid={{user.id}}>Submit</button>
+  {{else}}
+  <button type="submit" class="btn btn-primary newIdea">Submit</button>
+  {{/if}}
 </form>

@@ -15,11 +15,15 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     User.associate = function (models) {
-        User.hasMany(models.Comment, {});
+        User.hasMany(models.Comment, {
+            onDelete: "cascade"
+        });
     };
 
     User.associate = function (models) {
-        User.hasMany(models.Idea, {});
+        User.hasMany(models.Idea, {
+            onDelete: "cascade"
+        });
     };
 
     return User
