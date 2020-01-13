@@ -39,7 +39,9 @@ module.exports = function (sequelize, DataTypes) {
     };
 
     Idea.associate = function (models) {
-        Idea.hasMany(models.Comment, {});
+        Idea.hasMany(models.Comment, {
+            onDelete: "cascade"
+        });
     };
     return Idea
 };
