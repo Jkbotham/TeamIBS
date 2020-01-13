@@ -16,9 +16,9 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 var sequelize = new Sequelize(
-	"idea_board",
-	"root",
-	"", {
+	process.env.MYSQL_DBNAME,
+	process.env.MYSQL_USER,
+	process.env.MYSQL_KEY, {
 		"dialect": "sqlite",
 		"storage": "./session.sqlite"
 	});
@@ -37,8 +37,8 @@ app.use(cookieParser());
 app.use(session({
 	secret: 'meow',
 	store: database,
-	resave: false, // we support the touch method so per the express-session docs this should be set to false
-	proxy: true // if you do SSL outside of node.
+	resave: false // we support the touch method so per the express-session docs this should be set to false
+	// proxy: true // if you do SSL outside of node.
   }))
 
   database.sync();
