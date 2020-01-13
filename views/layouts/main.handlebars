@@ -14,11 +14,11 @@
   <script src="https://kit.fontawesome.com/308ac35dbf.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/styles/style.css">
 
-  {{!-- <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+  <!-- Firebase -->
+    {{!-- <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script> --}}
     <!-- Firechat -->
-    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" />
-    <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script> --}}
+    {{!-- <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" /> --}}
+    {{!-- <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script> --}}
   <title>Idea Board</title>
 </head>
 
@@ -26,6 +26,9 @@
   <a class="navbar-brand" href="/"><img src="/img/slice3.png" class="d-inline-block align-top" width="100" style="margin-left:20px; margin-right:10px"></a>
   <a class="nav-item nav-link left" style="color: #ccc" href="#">Profile</a>
   <a class="nav-item nav-link left" style="color: #ccc" href="/submit">Submit</a>
+  {{!-- <div id="firechat-wrapper">
+      <button onclick="login('twitter');">Login with Twitter</button> --}}
+    </div>
 </nav>
 
 <body>
@@ -41,54 +44,51 @@
     </div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     {{!-- <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script> --}}
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    {{!-- <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
-    <script> --}}
-  {{!-- Your web app's Firebase configuration --}}
-   {{!-- var firebaseConfig = {
-    apiKey: "AIzaSyCkVP4hqX0edunSS75rv6l9HTOxhLIN3tM",
-    authDomain: "spitball-74f2e.firebaseapp.com",
-    databaseURL: "https://spitball-74f2e.firebaseio.com",
-    projectId: "spitball-74f2e",
-    storageBucket: "spitball-74f2e.appspot.com",
-    messagingSenderId: "1095679741888",
-    appId: "1:1095679741888:web:b5d60d39ca1d3773a94225",
-    measurementId: "G-T3HEF1G9G7"
-  };
+    <!-- TODO: Add SDKs for Firebase products that you want to use -->
+    {{!-- <script src="https://firebase.google.com/docs/web/setup#available-libraries"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script> --}}
+    {{!-- <script> --}}
+  {{!-- // Your web app's Firebase configuration 
+   // var firebaseConfig = {
+    // apiKey: "AIzaSyCkVP4hqX0edunSS75rv6l9HTOxhLIN3tM",
+    // authDomain: "spitball-74f2e.firebaseapp.com",
+    // databaseURL: "https://spitball-74f2e.firebaseio.com",
+    // projectId: "spitball-74f2e",
+    // storageBucket: "spitball-74f2e.appspot.com",
+    // messagingSenderId: "1095679741888",
+    // appId: "1:1095679741888:web:b5d60d39ca1d3773a94225",
+    // measurementId: "G-T3HEF1G9G7"
+  //};
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
+  // firebase.initializeApp(firebaseConfig);
+  // firebase.analytics(); --}}
+{{!-- </script> --}}
 ​
-<script> --}}
-      {{!-- function login() {
+{{!-- <script>  --}}
+      {{!-- // function login() {
         // Log the user in via Twitter
-        var provider = new firebase.auth.TwitterAuthProvider();
-        firebase.auth().signInWithPopup(provider).catch(function(error) {
-          console.log("Error authenticating user:", error);
-          console.log(provider)
-        });
-      }
-      firebase.auth().onAuthStateChanged(function(user) { --}}
-        {{!-- Once authenticated, instantiate Firechat with the logged in user --}}
-        {{!-- if (user) {
-          initChat(user);
-        }
-      });
-      function initChat(user) { --}}
-        {{!-- Get a Firebase Database ref --}}
-        {{!-- var chatRef = firebase.database().ref("chat"); --}}
-        {{!-- Create a Firechat instance --}}
-        {{!-- var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper")); --}}
-        {{!-- Set the Firechat user --}}
-        {{!-- chat.setUser(user.uid, user.displayName);
-      } --}}
-    {{!-- </script>
-    <div id="firechat-wrapper">
-      <button onclick="login('twitter');">Login with Twitter</button>
-    </div> --}}
+        // var provider = new firebase.auth.TwitterAuthProvider();
+        // firebase.auth().signInWithPopup(provider).catch(function(error) {
+          // console.log("Error authenticating user:", error);
+          // console.log(provider)
+        //});
+      //}
+      // firebase.auth().onAuthStateChanged(function(user) { 
+        // Once authenticated, instantiate Firechat with the logged in user
+       //
+      // function initChat(user) { 
+       // Get a Firebase Database ref 
+        // var chatRef = firebase.database().ref("chat"); 
+        // Create a Firechat instance 
+        // var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
+        // Set the Firechat user
+        // chat.setUser(user.uid, user.displayName);
+      // }
+   //</script>
+    // {!-- <div id="firechat-wrapper">
+      //<button onclick="login('twitter');">Login with Twitter</button>
+    //</div>  --}} 
   <script src="/js/index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
