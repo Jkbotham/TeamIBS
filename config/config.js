@@ -21,8 +21,8 @@ module.exports = {
 		"use_env_variable": "JAWSDB_URL",
 		"dialect": "mysql"
 	},
-	"facebook_api_key": "878033375944351",
-	"facebook_api_secret":"07bedf82212416f6021d618f35862cc1",
+	"facebook_api_key": "",
+	"facebook_api_secret":"",
 	"call_back_url": "https://teamibs.herokuapp.com/auth/facebook/callback",
 	"use_database": true,
 	"host": "localhost",
