@@ -16,8 +16,7 @@ $(document).ready(function () {
 	});
 
 	$(".comment-button").on("click", function (event) {
-		// event.preventDefault();
-
+		event.preventDefault();
 		const id = $(this).data().id
 		const point = $(this).data().points
 		const upOrDown = $(this).data().upordown
