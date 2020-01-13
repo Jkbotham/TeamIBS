@@ -1,6 +1,9 @@
 let db = require("../models");
 
 module.exports = function (app) {
+
+    //-------------------------Ideas------------------------//
+
   // Get all examples
   app.get("/api/ideas", function (req, res) {
     db.Idea.findAll({}).then(function () { });
@@ -12,16 +15,46 @@ module.exports = function (app) {
     db.Idea.create({
       title: req.body.title,
       body: req.body.body,
+      UserId: req.body.userID,
       points: 0
     }).then(function (results) {
       res.end();
     });
   });
 
+  //Updates an idea
+  app.post("/api/updateIdea", (req, res) => {
+    db.Idea.update({
+      title: req.body.title,
+      body: req.body.body
+    },
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(results => {
+        res.end()
+      });
+  });
+
+  //Deletes an idea
+  app.post("/api/delete", function (req, res) {
+    db.Idea.destroy({
+      where: {
+        id: req.body.id
+      }
+    }).then(function () {
+      res.end();
+    });
+  });
+
+  //-------------------------Comments------------------------//
+
   // Creates new comment on an idea and updates Vote Points of the Idea
   app.post("/api/newComment", function (req, res) {
     db.Comment.create({
       body: req.body.body,
+      UserId: req.body.userID,
       IdeaId: req.body.ideaID
     });
 
@@ -40,8 +73,23 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/api/delete", function (req, res) {
-    db.Idea.destroy({
+  //Updates a comment
+  app.post("/api/updateComment", (req, res) => {
+    db.Comment.update({
+      body: req.body.body
+    },
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(results => {
+        res.end()
+      });
+  });
+
+  //Deletes a comment
+  app.post("/api/deleteComment", function (req, res) {
+    db.Comment.destroy({
       where: {
         id: req.body.id
       }
@@ -49,4 +97,5 @@ module.exports = function (app) {
       res.end();
     });
   });
+
 };
