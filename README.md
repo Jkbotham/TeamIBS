@@ -2,10 +2,10 @@
 
 Spitball is an online collaboration website where users can post their ideas online. The website allows other users to comment, upvote, downvote, and share their ideas. This site is also mobile friendly.
 
-![homepage](design/homepage.png)
-![submit](design/submit.png)
-![commenting](design/comment.png)
-![profile](design/profile.png)
+![homepage](design/homepage.PNG)
+![submit](design/submit.PNG)
+![commenting](design/comment.PNG)
+![profile](design/profile.PNG)
 
 
 ## Getting Started
