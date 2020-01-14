@@ -31,7 +31,7 @@ font-size: .5em;
 }
 
 .card-top {
-  height: 65%;
+  height: 65% !important;
   overflow: scroll;
   -ms-overflow-style: none;
 }
@@ -69,17 +69,75 @@ font-size: .5em;
   background-color: #007bfe
 }
 
+.profile-card img {
+  width: 100% !important;
+  margin-top: -10%;
+}
+
+.prof-bot {
+  padding-top: 5px;
+}
+
+.edit-comment {
+  color: #ffbb66; 
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.edit-comment:hover {
+  cursor: pointer;
+  color: #dd8000;
+}
+
+.remove-button{
+  color: #dc3545; 
+  position: absolute;
+  margin-top: 12px;
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.remove-button:hover{
+  cursor: pointer;
+  color: #bb0000;
+}
+
+.edit-button {
+  color: #ffbb66; 
+  margin-left: 5px;
+  margin-top: 12px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.edit-button:hover {
+  cursor: pointer;
+  color: #dd8000;
+}
+
+.remove-comment {
+  margin-top: 0;
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
 @media screen and (max-width: 991px){
   .container {
     max-width: 100% !important;
     margin: 0 auto !important;
     justify-content: space-between !important;
   }
-  .idea-card {
-    margin: 0 auto;
+  .idea-card, .profile-card {
+    margin: 0 auto !important;
     margin-bottom: 20px;
-    width: 45%;
-    margin: 2.5%;
+    width: 45% !important;
+    margin: 2.5% !important;
   }
   .comment-form {
     width: 100%;
@@ -93,10 +151,19 @@ font-size: .5em;
 }
 
 @media screen and (max-width: 591px){
-  .idea-card {
-    margin: 0 auto;
-    margin-bottom: 20px;
+  .navbar-brand {
     width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+  .navbar-brand img {
+    margin: 0 auto !important;
+  }
+  .idea-card, .profile-card {
+    margin: 0 auto !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
   }
   .comment-form {
     width: 100%;

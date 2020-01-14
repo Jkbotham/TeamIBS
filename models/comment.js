@@ -30,5 +30,14 @@ module.exports = function(sequelize, DataTypes){
             onDelete: "cascade"
         });
     };
+
+    Comment.associate = function (models) {
+        Comment.belongsTo(models.User,{
+            foreignKey: {
+                allowNull: true
+            },
+            onDelete: "cascade"
+        });
+    };
     return Comment
 };

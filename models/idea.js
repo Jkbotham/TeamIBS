@@ -30,6 +30,15 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Idea.associate = function (models) {
+        Idea.belongsTo(models.User,{
+            foreignKey: {
+                allowNull: true
+            },
+            onDelete: "cascade"
+        });
+    };
+
+    Idea.associate = function (models) {
         Idea.hasMany(models.Comment, {});
     };
     return Idea

@@ -6,6 +6,11 @@ require("dotenv").config();
 const express = require("express");
 const db = require("./models");
 const exphbs = require("express-handlebars");
+const cookieParser = require("cookie-parser")
+const session = require("express-session")
+const passport = require("passport")
+
+
 
 // Calls express -- Sets port
 const app = express();
@@ -18,14 +23,20 @@ app.use(express.json());
 // Sets folder to be avail to clients
 app.use(express.static("public"));
 
+app.use(cookieParser());
+app.use(session({ secret: "meow", key: "sid" }))
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Sets rendering package
 app.engine("handlebars", exphbs({ defualtLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-require("./routes/htmlRoutes.js")(app);
-require("./routes/apiRoutes.js")(app);
+require("./config/passport")(app, passport)
+require("./routes/htmlRoutes.js")(app, passport);
+require("./routes/apiRoutes.js")(app, passport);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

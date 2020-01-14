@@ -1,6 +1,6 @@
   {{#each idea}}
 
-    <div class="card float-left idea-card" data-aos='fade-up'>
+    <div class="card float-left idea-card" data-aos='fade-up' data-thisid={{this.id}}>
       <div class="card-body">
         <div class="card-top">
           <h5 class="card-title">{{this.title}}</h5>
@@ -8,8 +8,8 @@
         </div>
         <div class="card-bottom">
           <hr class="hr-strong">
-          <h6 class="card-subtitle mb-2 text-muted">{{this.createdAt}}</h6>
-          <a href="/idea/{{this.id}}" class="card-link"><i class="far fa-comment-dots fa-2x"></i></a>
+          <h6 class="card-subtitle mb-2 text-muted">{{this.createdAt}}</h6><h6 class="card-subtitle mb-2 text-muted text-right" style="position: absolute; right: 20px; margin-top: -18px;"> {{this.dataValues.commentCount}} comments</h6>
+          <a href="/idea/{{this.id}}" class="card-link"><i class="far fa-comment-dots fa-2x"></i></a>{{this.comments.length}}
           <h6 id="idea-card-{{this.id}}" class="card-score float-right" data-index={{this.points}} data-thisid={{this.id}}>{{this.points}}</h6>
         </div>
       </div>

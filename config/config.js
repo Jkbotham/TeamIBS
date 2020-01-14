@@ -20,5 +20,13 @@ module.exports = {
 	"production": {
 		"use_env_variable": "JAWSDB_URL",
 		"dialect": "mysql"
-	}
+	},
+	"facebook_api_key": process.env.FACEBOOK_CLIENT_ID,
+	"facebook_api_secret": process.env.FACEBOOK_CLIENT_SECRET,
+	"call_back_url": "http://localhost:8080/auth/facebook/callback",
+	"use_database": true,
+	"host": "localhost",
+	"username": "root",
+	"password": "",
+	"database": "Database Name"
 };

@@ -32,18 +32,16 @@
                 placeholder="Enter comment"></textarea>
         </div>
     </div>
-    {{!-- <div class="col-md-6 col-sm-hidden"></div> <!--Fills out col-md-6 above, disappears on mobile--> --}}
 </div>
 <div class="row">
     <div class="col-lg-3 col-md-6 text-center button-cont">
-        <button type="button" class="btn btn-danger comment-button" data-id={{idea.id}} data-points={{idea.points}}>
-            <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-down fa-2x comment-button"></i></a>
+        <button type="button" class="btn btn-danger comment-button" data-id={{idea.id}} data-points={{idea.points}} data-userid={{user.id}}>
+            <i class="far fa-arrow-alt-circle-down fa-2x"></i>
         </button>
     </div>
     <div class="col-lg-3 col-md-6 text-center button-cont">
-        <button type="button" class="btn btn-success comment-button" data-id={{idea.id}} data-points={{idea.points}}
-            data-upordown=true>
-            <a href="#" class="card-link"><i class="far fa-arrow-alt-circle-up fa-2x comment-button"></i></a>
+        <button type="button" class="btn btn-success comment-button" data-upordown=true data-id={{idea.id}} data-points={{idea.points}} data-userid={{user.id}}>
+            <i class="far fa-arrow-alt-circle-up fa-2x"></i>
         </button>
     </div>
     <div class="col-lg-6 col-md-hidden"></div>
